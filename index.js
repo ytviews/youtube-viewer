@@ -2,7 +2,11 @@ const TorService = require('./services/tor.service');
 const startViewingHandler = require('./handlers/startViewing.handler');
 const { logger, urlReader } = require('./utils');
 const {
-  START_PORT, TOTAL_COUNT, BATCH_COUNT, VIEW_DURATION, URL_CONTAINER_FILE_NAME,
+  START_PORT,
+  TOTAL_COUNT,
+  BATCH_COUNT,
+  VIEW_DURATION,
+  URL_CONTAINER_FILE_NAME,
 } = require('./utils/constants');
 
 async function main() {
