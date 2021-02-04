@@ -22,8 +22,6 @@ const getBrowserInstance = async (port) => {
     args: IS_PROD ? ['--no-sandbox', `--proxy-server=socks5://127.0.0.1:${port}`] : args,
     devtools: !IS_PROD,
     executablePath: IS_PROD ? '/usr/bin/chromium-browser' : undefined,
-    defaultViewport: { width: 1280, height: 720 },
-    headless: false,
     ignoreDefaultArgs: ['--mute-audio'],
     ignoreHTTPSErrors: true,
   });
