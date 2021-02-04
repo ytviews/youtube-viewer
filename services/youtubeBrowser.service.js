@@ -23,6 +23,7 @@ const viewVideosInBatch = async ({ targetUrls, durationInSeconds, port }) => {
     browser = await puppeteer.getBrowserInstance(port);
     const page = await browser.newPage();
     page.setDefaultTimeout(PAGE_DEFAULT_TIMEOUT * 1000);
+    await page.setBypassCSP(true);
     page.on('error', handlePageCrash(page));
     page.on('pageerror', handlePageCrash(page));
 
