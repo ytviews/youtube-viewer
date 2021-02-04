@@ -12,9 +12,9 @@ const writeTorConfig = async (startPort, count) => {
   for (let i = 0; i < count; i += 1) {
     const port = startPort + i;
     promiseArr.push(
-      execWithPromise(
-        `echo "SocksPort ${port}" >> /etc/tor/torrc`,
-      ).then(() => logger.debug(`PORT ${port} written in tor config`)),
+        execWithPromise(
+            `echo "SocksPort ${port}" >> /etc/tor/torrc`,
+        ).then(() => logger.debug(`PORT ${port} written in tor config`)),
     );
   }
   return Promise.all(promiseArr).then(() => {

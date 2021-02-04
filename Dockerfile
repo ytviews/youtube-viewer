@@ -13,7 +13,9 @@ RUN apk add --no-cache \
       npm \
       tor
 
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true \
+    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+
 ENV NODE_ENV production
 ENV YOUTUBE_VIEWER_FORCE_DEBUG false
 
@@ -21,7 +23,7 @@ ENV YOUTUBE_VIEWER_FORCE_DEBUG false
 WORKDIR /app
 
 # Copy app artifacts and dependencies
-COPY ./core ./core 
+COPY ./core ./core
 COPY ./handlers ./handlers
 COPY ./helpers ./helpers
 COPY ./services ./services

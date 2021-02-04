@@ -37,7 +37,7 @@ The following commands will help create a docker image, build the app and run it
 
 ```console
 ~$ npm run build 
-~$ npm start ytview=5
+~$ npm start ytview=3
 ```
 
 ## Fine tuning for performance
