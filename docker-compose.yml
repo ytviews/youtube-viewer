@@ -1,6 +1,11 @@
 version:  '3'
-services: 
+services:
   ytview:
     build:
       context: .
     restart: unless-stopped
+    logging:
+      options:
+        max-size: '12m'
+        max-file: '5'
+      driver: json-file
