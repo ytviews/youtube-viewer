@@ -14,12 +14,14 @@ const args = [
   '--window-position=0,0',
   '--ignore-certifcate-errors',
   '--ignore-certifcate-errors-spki-list',
-  '--user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3312.0 Safari/537.36"'
+  '--user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3312.0 Safari/537.36"',
 ];
 
 const getBrowserInstance = async (port) => {
+  if (IS_PROD) args.push(`--proxy-server=socks5://127.0.0.1:${port}`);
+
   const browser = await puppeteer.launch({
-    args: IS_PROD ? ['--no-sandbox', `--proxy-server=socks5://127.0.0.1:${port}`] : args,
+    args,
     devtools: !IS_PROD,
     executablePath: IS_PROD ? '/usr/bin/chromium-browser' : undefined,
     ignoreDefaultArgs: ['--mute-audio'],
