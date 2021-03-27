@@ -2,18 +2,20 @@
   "name": "youtube-viewer",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "viewer.js",
   "scripts": {
     "build": "docker-compose build --no-cache",
     "start": "docker-compose up --scale",
-    "start:prod": "NODE_ENV=production node index",
-    "start:dev": "node index",
+    "start:prod": "NODE_ENV=production node viewer",
+    "start:dev": "node viewer",
     "down": "docker-compose down"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@cliqz/adblocker-puppeteer": "^1.20.4",
     "chalk": "^4.0.0",
+    "cross-fetch": "^3.1.2",
     "lodash": "^4.17.20",
     "puppeteer": "^7.0.0",
     "puppeteer-extra": "^3.1.9",

@@ -1,7 +1,8 @@
 const IS_PROD = (process.env.NODE_ENV === 'production');
 const SHOULD_FORCE_DEBUG_LOGS = process.env.YOUTUBE_VIEWER_FORCE_DEBUG;
 const IP_GETTER_URL = 'https://api.ipify.org/';
-const URL_CONTAINER_FILE_NAME = 'urls.txt';
+const URL_JSON_FILE_NAME = 'urls.json';
+const URL_KEYS_WORDS_FILE_NAME = 'keys-words.txt';
 
 /**
  * START_PORT - Port TOR will start using from for SOCKS proxy.
@@ -15,14 +16,15 @@ const START_PORT = 9052;
 const BATCH_COUNT = IS_PROD ? 6 : 1;
 const TOTAL_COUNT = 96;
 const VIEW_ACTION_COUNT = 10;
-const VIEW_DURATION = 230;
+const VIEW_DURATION = 530;
 const PAGE_DEFAULT_TIMEOUT = 600;
 
 module.exports = {
   IS_PROD,
   SHOULD_FORCE_DEBUG_LOGS,
   IP_GETTER_URL,
-  URL_CONTAINER_FILE_NAME,
+  URL_JSON_FILE_NAME,
+  URL_KEYS_WORDS_FILE_NAME,
 
   START_PORT,
   BATCH_COUNT,

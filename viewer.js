@@ -7,13 +7,13 @@ const {
   TOTAL_COUNT,
   BATCH_COUNT,
   VIEW_DURATION,
-  URL_CONTAINER_FILE_NAME,
+  URL_JSON_FILE_NAME,
 } = require('./utils/constants');
 
 async function main() {
   try {
-    const targetUrls = urlReader(URL_CONTAINER_FILE_NAME);
-    logger.info(`Preparing to generate ${TOTAL_COUNT} views. Target URL(s): ${targetUrls} Duration: ${VIEW_DURATION} seconds`);
+    const targetUrls = urlReader(URL_JSON_FILE_NAME);
+    logger.info(`Preparing to generate ${TOTAL_COUNT} views. Target URL(s): ${JSON.stringify(targetUrls)} Default Duration: ${VIEW_DURATION} seconds`);
     await TorService.writeTorConfig(START_PORT, BATCH_COUNT);
 
     for (let i = 0; i < Math.ceil(TOTAL_COUNT / BATCH_COUNT); i += 1) {

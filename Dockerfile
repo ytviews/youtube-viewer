@@ -28,10 +28,11 @@ COPY ./handlers ./handlers
 COPY ./helpers ./helpers
 COPY ./services ./services
 COPY ./utils ./utils
-COPY ./index.js .
+COPY viewer.js .
+COPY searcher.js .
 COPY ./package.json .
-COPY ./urls.txt .
+COPY urls.json .
 
 RUN npm install
 
-CMD ["node", "index" ,"--color=16m"]
+CMD ["node", "viewer" ,"--color=16m"]

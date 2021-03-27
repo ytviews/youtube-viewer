@@ -1,24 +1,46 @@
 /* eslint-disable no-restricted-syntax */
 const _random = require('lodash/random');
+const adBlocker = require('@cliqz/adblocker-puppeteer');
+const fetch = require('cross-fetch');
 const { logger } = require('../utils');
+const {
+  acceptCookie,
+  dismissLogin,
+  click,
+  waitForSelector,
+} = require('./selector');
+const { skipAds } = require('./skipAds');
 
-const watchVideosInSequence = async (page, ipAddr, targetUrlsList, durationInSeconds) => {
-  for (const url of targetUrlsList) {
-    await page.goto(url, { waitUntil: ['load', 'domcontentloaded', 'networkidle0', 'networkidle2'] });
+const { PuppeteerBlocker } = adBlocker;
+
+const watchVideosInSequence = async (page, ipAddr, targetUrlsList, durationDefault) => {
+  PuppeteerBlocker.fromPrebuiltAdsAndTracking(fetch).then((blocker) => {
+    blocker.enableBlockingInPage(page);
+  });
+
+  for (const target of targetUrlsList) {
+    const durationInSeconds = target.duration | durationDefault;
+    logger.info(`Duration Video: ${durationInSeconds}`);
+    await page.goto(target.url, { waitUntil: ['load', 'domcontentloaded', 'networkidle0', 'networkidle2'] });
 
     try {
       /** Close Login popup **/
-      const dismissLogin = await page.$('#dismiss-button');
-      await dismissLogin.click();
+      await dismissLogin(page);
       /** Accept Cookie **/
-      await page.waitForSelector('iframe', { timeout: 5000 });
-      const elementHandle = await page.$('#iframe');
-      const frame = await elementHandle.contentFrame();
-      await frame.waitForSelector('#introAgreeButton');
-      const introAgreeButton = await frame.$('#introAgreeButton > div.ZFr60d.CeoRYc');
-      await introAgreeButton.click();
+      await acceptCookie(page);
+      /** Get play btn selector and click **/
+      /**
+      // await click(page, 'playButton');
+      await click('gdprButton');
+      await click('dismissBullshitButton');
+      await click('noThanksButton');
+      await click('skipAdButton');
+      await click('introAgreeButton');
+      **/
+      /** Skip all Ads **/
+      await skipAds(page);
     } catch {
-      logger.logFailedAttempt(url, ipAddr);
+      logger.logFailedAttempt(target.url, ipAddr);
     }
 
     try {
@@ -26,9 +48,9 @@ const watchVideosInSequence = async (page, ipAddr, targetUrlsList, durationInSec
       await page.mouse.click(100, 100);
       const duration = (durationInSeconds + _random(-(durationInSeconds / 6), (durationInSeconds / 6), true));
       await page.waitForTimeout(duration * 1000);
-      await logger.logCount(page, url, ipAddr, duration);
+      await logger.logCount(page, target.url, ipAddr, duration);
     } catch {
-      logger.logFailedAttempt(url, ipAddr);
+      logger.logFailedAttempt(target.url, ipAddr);
     }
   }
 };

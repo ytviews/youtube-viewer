@@ -14,6 +14,11 @@ const args = [
   '--window-position=0,0',
   '--ignore-certifcate-errors',
   '--ignore-certifcate-errors-spki-list',
+  '--autoplay-policy=no-user-gesture-required',
+  '--disable-background-timer-throttling',
+  '--disable-backgrounding-occluded-windows',
+  '--disable-renderer-backgrounding',
+  '--disable-crash-reporter',
   '--user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3312.0 Safari/537.36"',
 ];
 
