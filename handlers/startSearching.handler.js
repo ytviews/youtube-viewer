@@ -1,7 +1,7 @@
 const _each = require('lodash/each');
 
 const TorService = require('../services/tor.service');
-const YTBrowserService = require('../services/youtubeBrowser.service');
+const YTBrowserService = require('../services/viewerBrowser.service');
 const { logger } = require('../utils');
 
 let successes = 0;
