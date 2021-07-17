@@ -1,7 +1,7 @@
 const _each = require('lodash/each');
 
 const TorService = require('../services/tor.service');
-const YTBrowserService = require('../services/viewerBrowser.service');
+const YTBrowserService = require('../services/searcherBrowser.service');
 const { logger } = require('../utils');
 
 let successes = 0;
@@ -10,12 +10,12 @@ let total = 0;
 
 const startSearchingHandler = async (options, index) => {
   await TorService.startTor();
-  const promiseArr = [];
+  const SearchPromiseArr = [];
   for (let i = 0; i < options.batchCount; i += 1) {
     const port = options.startPort + i;
-    promiseArr.push(YTBrowserService.viewVideosInBatch({ ...options, port }));
+    SearchPromiseArr.push(YTBrowserService.searcherVideosInBatch({ ...options, port }));
   }
-  return Promise.allSettled(promiseArr).then((settedPromises) => {
+  return Promise.allSettled(SearchPromiseArr).then((settedPromises) => {
     logger.info('Batch Summary -');
     _each(settedPromises, ({ status }, i) => {
       total += 1;

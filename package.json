@@ -8,6 +8,7 @@
     "start": "docker-compose up --scale",
     "start:prod": "NODE_ENV=production node viewer",
     "start:dev": "node viewer",
+    "start:searcher": "node searcher",
     "down": "docker-compose down"
   },
   "author": "",
@@ -17,9 +18,11 @@
     "chalk": "^4.0.0",
     "cross-fetch": "^3.1.2",
     "lodash": "^4.17.20",
-    "puppeteer": "^7.0.0",
+    "puppeteer": "^10.1.0",
     "puppeteer-extra": "^3.1.9",
-    "puppeteer-extra-plugin-stealth": "^2.4.9"
+    "puppeteer-extra-plugin-anonymize-ua": "^2.2.17",
+    "puppeteer-extra-plugin-stealth": "^2.4.9",
+    "puppeteer-extra-plugin-user-preferences": "^2.2.12"
   },
   "devDependencies": {
     "eslint": "^6.8.0",

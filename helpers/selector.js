@@ -7,11 +7,15 @@ const selectors = {
   introAgreeButton: '#introAgreeButton',
   playButton: 'button[aria-label="Play (k)"]',
   // playButton: '#movie_player > div.ytp-chrome-bottom > div.ytp-chrome-controls > div.ytp-left-controls > button[aria-label="Play (k)"]',
+  closeCookie: 'button[jsname="higCR"]',
   noThanksButton: '#button[aria-label="No thanks"]',
   dismissBullshitButton: '#dismiss-button paper-button',
   consentIframe: 'iframe[src*="consent"]',
   consentForm: 'form[action*="consent"]',
   skipAdButton: 'button[class*="skip-button"]',
+  playerView: 'div[id="player-container-inner]',
+  searchBar: 'input[id="search"]',
+  videoRenderer: 'ytd-video-renderer,ytd-grid-video-renderer',
 };
 const _clicked = {};
 

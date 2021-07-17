@@ -32,6 +32,7 @@ COPY viewer.js .
 COPY searcher.js .
 COPY ./package.json .
 COPY urls.json .
+COPY keys-words.txt .
 
 RUN npm install
 

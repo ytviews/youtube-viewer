@@ -2,7 +2,8 @@ const _shuffle = require('lodash/shuffle');
 const _take = require('lodash/take');
 
 const puppeteer = require('../core/puppeteer');
-const { watchVideosInSequence } = require('../helpers');
+const devices = require('../core/devices');
+const { searchVideosInSequence } = require('../helpers');
 const { logger } = require('../utils');
 const { VIEW_ACTION_COUNT, IP_GETTER_URL, PAGE_DEFAULT_TIMEOUT } = require('../utils/constants');
 
@@ -17,7 +18,7 @@ const handlePageCrash = (page) => (error) => {
   page.close();
 };
 
-const viewVideosInBatch = async ({ targetUrls, durationInSeconds, port }) => {
+const searcherVideosInBatch = async ({ targetWords, durationInSeconds, port }) => {
   let browser;
   try {
     browser = await puppeteer.getBrowserInstance(port);
@@ -27,14 +28,11 @@ const viewVideosInBatch = async ({ targetUrls, durationInSeconds, port }) => {
     page.on('error', handlePageCrash(page));
     page.on('pageerror', handlePageCrash(page));
 
-    await page.setViewport({
-      width: 640,
-      height: 480,
-      deviceScaleFactor: 1,
-    });
+    await page.emulate(devices['Desktop 1024x768']);
+
     const ipAddr = await getCurrentIP(page);
-    const targetUrlsForAction = _take(_shuffle(targetUrls), VIEW_ACTION_COUNT);
-    await watchVideosInSequence(page, ipAddr, targetUrlsForAction, durationInSeconds);
+    const targetWordsForAction = _take(_shuffle(targetWords), VIEW_ACTION_COUNT);
+    await searchVideosInSequence(page, ipAddr, targetWordsForAction, durationInSeconds);
     await page.close();
   } catch (error) {
     logger.warn('Entire view action in a batch failed. Waiting for TOR to acquire a new set of IPs');
@@ -44,4 +42,4 @@ const viewVideosInBatch = async ({ targetUrls, durationInSeconds, port }) => {
   }
 };
 
-module.exports = { getCurrentIP, viewVideosInBatch };
+module.exports = { getCurrentIP, searcherVideosInBatch };

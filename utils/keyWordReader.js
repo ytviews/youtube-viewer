@@ -9,10 +9,10 @@ const logger = require('./logger');
 
 const keyWordReader = (filename) => {
   try {
-    const fileContents = _toString(fs.readFileSync(path.resolve(process.cwd(), filename)));
-    const re = /(;|\n)/;
+    const fileContents = _toString(fs.readFileSync(path.resolve(process.cwd(), filename), 'utf8'));
+    const re = /\r?\n/;
     const removeBackLine = fileContents.split(re);
-    const urlArray = _compact(fileContents.urls);
+    const urlArray = _compact(removeBackLine);
     if (_isEmpty(urlArray)) throw new Error(`No urls found. Make sure ${filename} contains at least one url to proceed`);
     return urlArray;
   } catch (error) {

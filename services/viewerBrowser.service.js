@@ -2,6 +2,7 @@ const _shuffle = require('lodash/shuffle');
 const _take = require('lodash/take');
 
 const puppeteer = require('../core/puppeteer');
+const devices = require('../core/devices');
 const { watchVideosInSequence } = require('../helpers');
 const { logger } = require('../utils');
 const { VIEW_ACTION_COUNT, IP_GETTER_URL, PAGE_DEFAULT_TIMEOUT } = require('../utils/constants');
@@ -27,11 +28,8 @@ const viewVideosInBatch = async ({ targetUrls, durationInSeconds, port }) => {
     page.on('error', handlePageCrash(page));
     page.on('pageerror', handlePageCrash(page));
 
-    await page.setViewport({
-      width: 640,
-      height: 480,
-      deviceScaleFactor: 1,
-    });
+    await page.emulate(devices['Desktop 1024x768']);
+
     const ipAddr = await getCurrentIP(page);
     const targetUrlsForAction = _take(_shuffle(targetUrls), VIEW_ACTION_COUNT);
     await watchVideosInSequence(page, ipAddr, targetUrlsForAction, durationInSeconds);
