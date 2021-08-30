@@ -3,7 +3,7 @@ const PuppeteerExtra = require('puppeteer-extra');
 const puppeteer = require('puppeteer');
 const anonymizeUa = require('puppeteer-extra-plugin-anonymize-ua');
 const puppeteerPrefs = require('puppeteer-extra-plugin-user-preferences');
-const { IS_PROD } = require('../utils/constants');
+const { isProduction } = require('../utils/constants');
 
 PuppeteerExtra.use(stealthPlugin());
 PuppeteerExtra.use(anonymizeUa());
@@ -44,12 +44,12 @@ const args = [
 ];
 
 const getBrowserInstance = async (port) => {
-  if (IS_PROD) args.push(`--proxy-server=socks5://127.0.0.1:${port}`);
+  if (isProduction) args.push(`--proxy-server=socks5://127.0.0.1:${port}`);
 
   const browserr = await PuppeteerExtra.launch({
     args,
-    devtools: !IS_PROD,
-    executablePath: IS_PROD ? '/usr/bin/chromium-browser' : undefined,
+    devtools: !isProduction,
+    executablePath: isProduction ? '/usr/bin/chromium-browser' : undefined,
     ignoreDefaultArgs: ['--mute-audio'],
     ignoreHTTPSErrors: true,
   });

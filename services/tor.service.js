@@ -1,10 +1,10 @@
 const { execWithPromise } = require('../utils/childProcessWrapper');
 
 const { logger } = require('../utils');
-const { IS_PROD } = require('../utils/constants');
+const { isProduction } = require('../utils/constants');
 
 const writeTorConfig = async (startPort, count) => {
-  if (!IS_PROD) return Promise.resolve();
+  if (!isProduction) return Promise.resolve();
   logger.info('App running in production. Will use rotating proxy via TOR.');
   logger.info(' Writing Tor Config');
   await execWithPromise('touch /etc/tor/torrc && echo > /etc/tor/torrc');
@@ -27,7 +27,7 @@ const writeTorConfig = async (startPort, count) => {
 };
 
 const stopTor = async () => {
-  if (!IS_PROD) return;
+  if (!isProduction) return;
   try {
     await execWithPromise('pkill -9 -f "tor"');
   } catch (error) {
@@ -37,7 +37,7 @@ const stopTor = async () => {
 };
 
 const startTor = async () => {
-  if (!IS_PROD) return;
+  if (!isProduction) return;
   logger.info('Starting TOR.');
   await stopTor();
   try {

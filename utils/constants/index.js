@@ -1,4 +1,4 @@
-const IS_PROD = (process.env.NODE_ENV === 'production');
+const isProduction = (process.env.NODE_ENV === 'production');
 const SHOULD_FORCE_DEBUG_LOGS = process.env.YOUTUBE_VIEWER_FORCE_DEBUG;
 const IP_GETTER_URL = 'https://api.ipify.org/';
 const URL_JSON_FILE_NAME = 'urls.json';
@@ -13,14 +13,14 @@ const URL_KEYS_WORDS_FILE_NAME = 'keys-words.txt';
  * PAGE_DEFAULT_TIMEOUT - Max duration in seconds to wait for any action in the page.
  */
 const START_PORT = 9052;
-const BATCH_COUNT = IS_PROD ? 6 : 1;
+const BATCH_COUNT = isProduction ? 6 : 1;
 const TOTAL_COUNT = 96;
 const VIEW_ACTION_COUNT = 10;
 const VIEW_DURATION = 530;
 const PAGE_DEFAULT_TIMEOUT = 600;
 
 module.exports = {
-  IS_PROD,
+  isProduction,
   SHOULD_FORCE_DEBUG_LOGS,
   IP_GETTER_URL,
   URL_JSON_FILE_NAME,

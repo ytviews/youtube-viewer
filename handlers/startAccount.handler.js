@@ -1,21 +1,21 @@
 const _each = require('lodash/each');
 
 const TorService = require('../services/tor.service');
-const YTBrowserService = require('../services/searcherBrowser.service');
+const YTBrowserService = require('../services/viewerBrowser.service');
 const { logger } = require('../utils');
 
 let successes = 0;
 let failures = 0;
 let total = 0;
 
-const startSearchingHandler = async (options, index) => {
+const startAccountHandler = async (options, index) => {
   await TorService.startTor();
-  const SearchPromiseArr = [];
+  const promiseArr = [];
   for (let i = 0; i < options.batchCount; i += 1) {
     const port = options.startPort + i;
-    SearchPromiseArr.push(YTBrowserService.searcherVideosInBatch({ ...options, port }));
-  }x
-  return Promise.allSettled(SearchPromiseArr).then((settedPromises) => {
+    promiseArr.push(YTBrowserService.viewVideosInBatch({ ...options, port }));
+  }
+  return Promise.allSettled(promiseArr).then((settedPromises) => {
     logger.info('Batch Summary -');
     _each(settedPromises, ({ status }, i) => {
       total += 1;
@@ -28,4 +28,4 @@ const startSearchingHandler = async (options, index) => {
   });
 };
 
-module.exports = startSearchingHandler;
+module.exports = startAccountHandler;

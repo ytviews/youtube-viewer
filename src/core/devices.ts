@@ -1030,6 +1030,7 @@ const devices = [
 ];
 
 const devicesMap = {};
+// @ts-ignore
 for (const device of devices) devicesMap[device.name] = device;
 
-module.exports = devicesMap;
+export default devicesMap;
