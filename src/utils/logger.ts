@@ -5,15 +5,15 @@ import { isProduction, SHOULD_FORCE_DEBUG_LOGS } from './constants';
 
 const store: any = {};
 
-const browser = (...message: string[]) => console.log(`${chalk.yellow.inverse(` [${(new Date()).toLocaleTimeString()}] - BROWSER `)} ${chalk.yellow(message)}`);
-const info = (...message: any[]) => console.log(`${chalk.white.inverse(` [${(new Date()).toLocaleTimeString()}] - INFO    `)} ${chalk.white(message)}`);
-const error = (...message: any[]) => console.log(`${chalk.red.inverse(` [${(new Date()).toLocaleTimeString()}] - ERROR   `)} ${chalk.red(message)}`);
-const success = (...message: any[]) => console.log(`${chalk.green.inverse(` [${(new Date()).toLocaleTimeString()}] - SUCCESS `)} ${chalk.green(message)}`);
+const browser = (...message: string[]) => console.log(`${chalk.yellow.inverse(` [${(new Date()).toLocaleTimeString()}] - BROWSER `)} ${chalk.yellow(...message)}`);
+const info = (...message: any[]) => console.log(`${chalk.white.inverse(` [${(new Date()).toLocaleTimeString()}] - INFO    `)} ${chalk.white(...message)}`);
+const error = (...message: any[]) => console.log(`${chalk.red.inverse(` [${(new Date()).toLocaleTimeString()}] - ERROR   `)} ${chalk.red(...message)}`);
+const success = (...message: any[]) => console.log(`${chalk.green.inverse(` [${(new Date()).toLocaleTimeString()}] - SUCCESS `)} ${chalk.green(...message)}`);
 const debug = (...message: any[]) => {
   if (!SHOULD_FORCE_DEBUG_LOGS && isProduction) return;
-  console.log(`${chalk.magenta.inverse(` [${(new Date()).toLocaleTimeString()}] - DEBUG   `)} ${chalk.magenta(message)}`);
+  console.log(`${chalk.magenta.inverse(` [${(new Date()).toLocaleTimeString()}] - DEBUG   `)} ${chalk.magenta(...message)}`);
 };
-const warn = (...message: string[]) => console.log(`${chalk.yellow.inverse(` [${(new Date()).toLocaleTimeString()}] - WARN    `)} ${chalk.yellow(message)}`);
+const warn = (...message: string[]) => console.log(`${chalk.yellow.inverse(` [${(new Date()).toLocaleTimeString()}] - WARN    `)} ${chalk.yellow(...message)}`);
 const logFailedAttempt = (url: string, ipAddr: string) => {
   warn(`An attempt to view ${url} with IP: ${ipAddr} was probably blocked.`);
 };

@@ -1,15 +1,16 @@
 import { BrowserContext } from '../core/browser/BrowserContext';
 import { Page } from '../core/browser/Page';
-import devices from "../core/devices";
+import devices from '../core/devices';
+import { IPublicIp } from './PublicIp';
 
 export abstract class BrowserPage {
     public browser: BrowserContext;
     protected url: string;
     protected name: string;
-    protected publicIp?: string;
+    protected publicIp?: IPublicIp;
     protected page: Page;
 
-    constructor(browser: BrowserContext, name: string, url: string, publicIp?: string) {
+    constructor(browser: BrowserContext, name: string, url: string, publicIp?: IPublicIp) {
         this.browser = browser;
         this.name = name;
         this.url = url;

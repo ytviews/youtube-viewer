@@ -7,6 +7,7 @@ import Account from '../core/accounts/Account';
 import { BrowserContext } from '../core/browser/BrowserContext';
 import { PublicAddress, YoutubeActions, Congolese } from '../helpers';
 import { ICollectionNames } from '../interfaces/Accounts';
+import { IPublicIp } from '../interfaces/PublicIp';
 import { logger, sleep } from '../utils';
 import {
   VIEW_ACTION_COUNT,
@@ -39,13 +40,13 @@ export const accountYouTubeInBatch = async ({ accounts, port }: any) => {
     const ipaddr: PublicAddress = new PublicAddress(context, 'ipaddr', IP_GETTER_URL);
     await ipaddr.initialize();
 
-    const publicIp: string = await ipaddr.processors();
+    const publicIp: IPublicIp = await ipaddr.processors();
     await ipaddr.screenshot();
     await ipaddr.close();
-    logger.info(`Tor public IP: ${publicIp}`);
+    logger.info(`Tor public IP: ${JSON.stringify(publicIp, null, 2)}`);
 
     // Congolese Names
-    const congolese: Congolese = new Congolese(context, 'names', CONGOLESE_GETTER_URL, publicIp);
+    const congolese: Congolese = new Congolese(context, 'names', CONGOLESE_GETTER_URL);
     await congolese.initialize();
     const names: Array<ICollectionNames> = await congolese.processors();
     await congolese.screenshot();

@@ -25,9 +25,9 @@ export default class Account {
         this.lastName = account.lastName;
         this.gender = gender;
         this.birthday = {
-            day: '5',
-            month: '6',
-            year: '1983'
+            day: `${1 + Math.floor(Math.random() * 27)}`,
+            month: `${1 + Math.floor(Math.random() * 11)}`,
+            year: `${1950 + Math.floor(Math.random() * 40)}`
         }
     }
 

@@ -1,0 +1,145 @@
+import parseMessage from 'parse-otp-message';
+import { Client } from 'plivo';
+import pEvent from 'p-event';
+
+import IncomingSMSServer from './incoming-sms-server';
+import Provider from './provider';
+
+interface IPlivoProvider {
+    authId: string;
+    authToken: string;
+}
+
+interface IMessage {
+    from: string,
+    to: string,
+    text: string,
+    id: string,
+    code?: string
+    service?: string
+    timestamp: Date
+}
+
+interface IOptionsMessages {
+    timeout: number
+    number: number
+    service: string
+}
+
+export default class PlivoProvider extends Provider {
+    _server: IncomingSMSServer
+    _client: Client
+    _messages: object
+    _initialized: boolean
+    constructor (options: IPlivoProvider) {
+        super()
+
+        const authId: string = options.authId || process.env.PLIVO_AUTH_ID
+        const authToken: string = options.authToken || process.env.PLIVO_AUTH_TOKEN
+
+        this._messages = { }
+
+        this._client = new Client(authId, authToken)
+        this._server = new IncomingSMSServer({
+            transform: (body) => {
+                const message: IMessage = {
+                    from: body.From,
+                    to: body.To,
+                    text: body.Text,
+                    id: body.MessageUUID,
+                    timestamp: new Date()
+                }
+
+                const result = parseMessage(message.text)
+                if (result && result.code && result.service) {
+                    message.code = result.code
+                    message.service = result.service
+                    return message
+                }
+            }
+        })
+
+        this._server.on('message', (message) => {
+            if (!this._messages[message.to]) {
+                this._messages[message.to] = []
+            }
+
+            // TODO: limit max number of messages stored in memory
+            this._messages[message.to].push(message)
+        })
+    }
+
+    get name () {
+        return 'plivo'
+    }
+
+    async getNumbers (options = { }) {
+        // @ts-ignore
+        const { limit = 20, offset = 0 } = options
+
+        await this._ensureInitialized()
+
+        const results = await this._client.numbers.list({
+            limit: Math.max(1, Math.min(20, limit)),
+            offset: Math.max(0, offset),
+            services: 'sms'
+        })
+
+        return results
+            .map((o) => o.number)
+    }
+
+    async getMessages (options: IOptionsMessages) {
+        const {
+            timeout = 60000,
+            number,
+            service
+        } = options
+        // @ts-ignore
+        ow(number, ow.string.nonEmpty.label('number'))
+        // @ts-ignore
+        ow(service, ow.string.nonEmpty.label('service'))
+
+        await this._ensureInitialized()
+        if (this._messages[number]) {
+            return this._messages[number].reverse().slice(0, 3)
+        }
+
+        await pEvent(this._server, 'message', {
+            timeout,
+            filter: (message) => {
+                return (message.to === number && message.service === service)
+            }
+        })
+
+        return this._messages[number].reverse().slice(0, 3)
+    }
+
+    async _ensureInitialized () {
+        if (this._initialized) return
+        // @ts-ignore
+        const apps: any[] = await this._client.applications.list()
+        const app = apps.filter((app) => app.defaultApp)[0]
+
+        if (!app) {
+            throw new Error('unable to find default plivo app')
+        }
+
+        await this._server.listen()
+
+        await this._client.applications.update(app.id, {
+            // @ts-ignore
+            message_url: this._server.url,
+            message_method: this._server.method
+        })
+
+        this._initialized = true
+    }
+
+    async close () {
+        if (!this._initialized) return
+
+        await this._server.close()
+        this._initialized = false
+    }
+}

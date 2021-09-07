@@ -31,6 +31,14 @@ export class Page {
         this.puppeteerPage = await this.puppeteerBrowserContext.newPage();
         this.puppeteerPage.setDefaultTimeout(PAGE_DEFAULT_TIMEOUT * 1000);
         await this.puppeteerPage.setBypassCSP(true);
+        await this.puppeteerPage.setJavaScriptEnabled(true);
+
+        const headlessUserAgent = await this.puppeteerPage.evaluate(() => navigator.userAgent);
+        const chromeUserAgent = headlessUserAgent.replace('HeadlessChrome', 'Chrome');
+        await this.puppeteerPage.setUserAgent(chromeUserAgent);
+        await this.puppeteerPage.setExtraHTTPHeaders({
+            'accept-language': 'fr-FR,fr;q=0.8'
+        });
         // @ts-ignore
         this.puppeteerPage.on('error', this.handlePageCrash);
         // @ts-ignore
@@ -134,6 +142,7 @@ export class Page {
         if (Selectors[selector]) selector = Selectors[selector];
         return await this.puppeteerPage.waitForSelector(selector, options);
     }
+
     async waitForSelectorLoaded(selector: string, visible: boolean): Promise<void> {
         await this.puppeteerPage.waitForSelector(selector, {visible: visible});
     }

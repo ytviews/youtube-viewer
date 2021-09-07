@@ -1,7 +1,7 @@
 import { concat } from 'lodash';
 export const isProduction = (process.env.NODE_ENV === 'production');
 export const SHOULD_FORCE_DEBUG_LOGS = process.env.YOUTUBE_VIEWER_FORCE_DEBUG;
-export const IP_GETTER_URL = 'https://api.ipify.org/';
+export const IP_GETTER_URL = 'https://api.myip.com';
 export const URL_JSON_FILE_NAME = 'urls.json';
 export const URL_JSON_FILE_YOUTUBE = 'src/config/youtube-admin.json';
 export const URL_JSON_FILE_YOUTUBE_ACCOUNTS = 'src/config/account.json';
@@ -45,6 +45,9 @@ const BASE_CHROMIUM_ARGS = [
     // `--load-extension=${extensions.TimeShift}`,
     '--no-sandbox',
     '--disable-setuid-sandbox',
+    '--disable-web-security',
+    // '--disable-features=IsolateOrigins',
+    // '--disable-site-isolation-trials',
     '--disable-infobars',
     '--window-position=0,0',
     '--ignore-certifcate-errors',

@@ -11,6 +11,6 @@ export class PublicAddress extends BrowserPage {
             this.page.bringToFront(),
         ]);
         // @ts-ignore
-        return await this.page.puppeteer.$eval('body', (body) => body.innerText);
+        return await this.page.puppeteer.$eval('body', (body) => JSON.parse(body.innerText));
     }
 }

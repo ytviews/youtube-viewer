@@ -4,16 +4,16 @@ import * as path from 'path'
 import crypto from 'crypto'
 **/
 import * as fs from 'fs';
-import { isEmpty } from 'lodash';
+import { isEmpty, isUndefined } from 'lodash';
 import { Protocol } from 'puppeteer';
 import Account from '../../core/accounts/Account'
-import Phone from '../../helpers/phone/Phone';
+import SMSNumberVerifier from '../sms-number-verifier';
 import { BrowserPage } from '../../interfaces/Browser';
 import { IAccountsForAction } from '../../interfaces/Accounts'
 import { logger, sleep, Json } from '../../utils';
 import { URL_JSON_FILE_YOUTUBE_ACCOUNTS } from '../../utils/constants';
+import {f} from "@cliqz/adblocker-puppeteer";
 
-// https://gist.github.com/Brandawg93/728a93e84ed7b66d8dd0af966cb20ecb
 // https://onlinesim.ru/api/getFreeList?lang=en&country=33&page=1&number=752172852&subkey=7ac0d7f083325b8e487b136fe06d59af
 export class YoutubeActions extends BrowserPage {
 
@@ -116,7 +116,7 @@ export class YoutubeActions extends BrowserPage {
             }
         } catch (e) {
             console.error(`Problem with scraping ${account.email}: ${e}`);
-            logger.logFailedAttempt(account.email, this.publicIp);
+            logger.logFailedAttempt(account.email, this.publicIp.ip);
         }
 
         if (isLogged) {
@@ -138,12 +138,12 @@ export class YoutubeActions extends BrowserPage {
 
             await sleep(2);
             // Click "Create an account"
-            await this.page.waitForSelector('createAnAccount')
-            await this.page.click('createAnAccount')
+            const createAnAccount = await this.page.waitForSelector('createAnAccount');
+            await createAnAccount.click();
 
             // Click "For me"
-            await this.page.waitForSelector('clickForMe')
-            await this.page.click('clickForMe')
+            const clickForMe = await this.page.waitForSelector('clickForMe');
+            await clickForMe.click();
 
             await this.page.waitForNavigation();
 
@@ -154,8 +154,8 @@ export class YoutubeActions extends BrowserPage {
             await sleep();
 
             // Email
-            await this.page.waitForSelector('clickCreateNewEmail')
-            await this.page.click('clickCreateNewEmail')
+            const clickCreateNewEmail = await this.page.waitForSelector('clickCreateNewEmail')
+            await clickCreateNewEmail.click();
             await this.page.input('username', account.username, { delay: 100 }, true)
 
             await this.page.waitForTimeout(1000)
@@ -184,7 +184,8 @@ export class YoutubeActions extends BrowserPage {
             await this.page.waitForTimeout(1000);
 
             // Click "Next"
-            await this.page.click('accountDetailsNext');
+            const accountDetailsNext = await this.page.waitForSelector('accountDetailsNext');
+            await accountDetailsNext.click();
 
             await sleep(10);
 
@@ -196,29 +197,50 @@ export class YoutubeActions extends BrowserPage {
                 document.querySelector('input[type="email"][name="recoveryEmail"]') !== null
             );
 
+            console.log(
+                `phoneCheck: ${phoneCheck}`,
+                `recoveryEmail: ${recoveryEmail}`,
+                `CheckStatus: ${!(phoneCheck && recoveryEmail)}`
+                );
+
             if (!(phoneCheck && recoveryEmail)) {
                 /** Getting Number and Verification Code **/
-                let validNumber: boolean = true
-                let numberInfo;
+                let validNumber: boolean = false
+                let number;
+                const smsVerifier = new SMSNumberVerifier('onlinesim', {
+                    token: '5543937fad3e4d186f3155e8f8f746f1',
+                    country: this.publicIp.country
+                })
+
                 do {
-                    numberInfo = await Phone.Number();
+                    // fetch a number to use for a new verification request
+                    number = await smsVerifier.getNumber({ service: 'google' });
+                    logger.info(`Number Info: ${
+                        JSON.stringify(
+                            smsVerifier.getNumberInfo(number.number), 
+                            null, 
+                            2)
+                    }`);
                     await sleep(5);
                     /** Typing Number **/
-                    await this.page.input('input[type="tel"]', numberInfo.number,{ delay: 70 }, true);
-                    validNumber = await this.page.puppeteer.evaluate(() =>
-                        // if input[id="phoneNumberId"][aria-invalid="true"] is not defined --> valid number
-                        document.querySelector('input[type="tel"][aria-invalid="true"]') !== null
-                    );
+                    if (!isUndefined(number.number)) {
+                        await this.page.input('input[type="tel"]', number.number,{ delay: 70 }, true);
+                        await sleep(2);
+                        validNumber = await this.page.puppeteer.evaluate(() => {
+                            return document.querySelector('svg[class="stUf5b qpSchb"][aria-hidden="true"]') === null
+                        });
+                    }
                     logger.warn(`Valid Number: ${validNumber}`);
-                } while (validNumber === false)
+                } while (validNumber === false && isUndefined(number.number))
 
                 if (validNumber) {
                     /** Verification Code **/
-                    const smsCode = await Phone.SmsCode(numberInfo);
+                    // check for valid codes received via SMS from the google service
+                    const smsCode = await smsVerifier.getAuthCodes({ number, service: 'google' });
                     logger.info(`Code SMS: ${smsCode}`);
                     /** Fill Verification Code **/
                     await this.page.waitForSelector('verifyCode');
-                    await this.page.input('verifyCode', smsCode, { delay: 100 }, true);
+                    await this.page.input('verifyCode', smsCode[0], { delay: 100 }, true);
                 }
             }
 
