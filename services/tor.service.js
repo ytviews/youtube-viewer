@@ -51,3 +51,17 @@ const startTor = async () => {
 };
 
 module.exports = { writeTorConfig, stopTor, startTor };
+
+/**
+class TorNetworkProxy {
+  constructor(torCfg) {
+    this.torCfg = torCfg;
+    this.setType(this.torCfg.Socks5Proxy);
+    this.setHostName(this.torCfg.hostname);
+    this.setPort(this.torCfg.socksPort);
+  }
+  url(self) {
+    return `socks5://${this.torCfg.hostname}:${this.torCfg.socksPort}`;
+  }
+}
+**/

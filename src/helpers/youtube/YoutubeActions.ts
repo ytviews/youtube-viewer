@@ -197,12 +197,6 @@ export class YoutubeActions extends BrowserPage {
                 document.querySelector('input[type="email"][name="recoveryEmail"]') !== null
             );
 
-            console.log(
-                `phoneCheck: ${phoneCheck}`,
-                `recoveryEmail: ${recoveryEmail}`,
-                `CheckStatus: ${!(phoneCheck && recoveryEmail)}`
-                );
-
             if (!(phoneCheck && recoveryEmail)) {
                 /** Getting Number and Verification Code **/
                 let validNumber: boolean = false

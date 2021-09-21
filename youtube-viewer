@@ -1,0 +1,15 @@
+#!/usr/bin/env ts-node
+
+'use strict'
+
+const App = require('@viewer/foundation/application')
+
+// https://github.com/orassayag/spam-revenge
+/**
+ * Kick off the command line helper called "youtube-viewer". Youtube-viewer commands
+ * can scaffold features or project files. The CLI command will
+ * execute in the terminal and terminate itself once finished.
+ */
+new App()
+    .fromAppRoot(__dirname)
+    .consoleForLife()
