@@ -1,4 +1,4 @@
-export const Selectors = {
+export const Selectors: {[key: string]: string} = {
     pageBody: 'body',
     iframe: 'iframe',
     gdprButton: 'button[aria-label^="Agree"]',
@@ -36,4 +36,4 @@ export const Selectors = {
     month: '#month',
     year: 'input[name="year"]',
 };
-export const _clicked = {};
+export const _clicked: {[key: string]: number} = {};

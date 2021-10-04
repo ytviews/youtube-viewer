@@ -1,4 +1,6 @@
+// @ts-ignore
 import GetSMSCodeClient from 'getsmscode';
+// @ts-ignore
 import parseMessage from 'parse-otp-message';
 import Provider from './Provider';
 import logger from '../../../utils/logger';
@@ -16,16 +18,16 @@ export default class GetSMSCodeProvider extends Provider {
         return 'getsmscode'
     }
 
-    async addNumberToBlacklist (options) {
+    async addNumberToBlacklist (options: any) {
         return this._client.addNumberToBlacklist(options)
     }
 
-    async getNumbers (options) {
+    async getNumbers (options: any) {
         const result = await this._client.getNumber(options)
         return [ result ]
     }
 
-    async getMessages (options) {
+    async getMessages (options: any): Promise<any> {
         if (options && options.attempt === 0) {
             await sleep()
         }

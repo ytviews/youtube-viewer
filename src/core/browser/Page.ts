@@ -16,8 +16,10 @@ import { logger } from '../../utils';
 import { Selectors, _clicked } from '../../helpers/selectors/Selectors';
 
 export class Page {
+    // @ts-ignore
     private puppeteerPage: PuppeteerPage;
     private puppeteerBrowserContext: PuppeteerBrowserContext;
+    // @ts-ignore
     private name: string;
     private url: string;
 
@@ -87,7 +89,8 @@ export class Page {
     async input(selector: string, keyword: string, options?: { delay: number }, press?: boolean) {
         logger.info(`Typing "${keyword}", Press Enter: ${press}`);
         if (Selectors[selector]) selector = Selectors[selector];
-        const input = await this.puppeteerPage.$(selector);
+        // @ts-ignore
+        const input: ElementHandle = await this.puppeteerPage.$(selector);
         // overwrites last text in input
         await input.click({ clickCount: 3 });
         await input.type(keyword, options);
@@ -106,7 +109,7 @@ export class Page {
         delay?: number;
         button?: MouseButton;
         clickCount?: number;
-    }, times = 1): Promise<boolean> {
+    }, times = 1): Promise<boolean|undefined> {
         logger.info(`Clicking "${selector}"`);
         if (Selectors[selector]) selector = Selectors[selector];
         if (_clicked[selector] >= times) return;
@@ -128,7 +131,7 @@ export class Page {
         await this.puppeteerPage.keyboard.press(keyName, options);
     }
 
-    async searchElement(elementName: string): Promise<ElementHandle<Element>> {
+    async searchElement(elementName: string): Promise<ElementHandle<Element> | null> {
         return await this.puppeteerPage.$(elementName);
     }
 
@@ -182,7 +185,7 @@ export class Page {
     async close(options?: {
         runBeforeUnload?: boolean;
     }): Promise<void> {
-        return this.puppeteerPage.close()
+        return this.puppeteerPage.close(options)
     }
 
     handlePageCrash(error: string): void {

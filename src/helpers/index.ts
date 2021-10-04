@@ -1,3 +1,4 @@
+export * from './gmail/GmailRegistration';
 export * from './search/Address';
 export * from './search/Congolese';
 export * from './search/Google';

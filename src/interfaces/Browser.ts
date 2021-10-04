@@ -8,6 +8,7 @@ export abstract class BrowserPage {
     protected url: string;
     protected name: string;
     protected publicIp?: IPublicIp;
+    // @ts-ignore
     protected page: Page;
 
     constructor(browser: BrowserContext, name: string, url: string, publicIp?: IPublicIp) {

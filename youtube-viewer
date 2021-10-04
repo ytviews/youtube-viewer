@@ -1,15 +1,19 @@
-#!/usr/bin/env ts-node
+#!/usr/bin/env node
 
 'use strict'
 
-const App = require('@viewer/foundation/application')
+require('./dist/cli');
+/**
+const Application = require('@viewer/core/application')
 
 // https://github.com/orassayag/spam-revenge
+
 /**
  * Kick off the command line helper called "youtube-viewer". Youtube-viewer commands
  * can scaffold features or project files. The CLI command will
  * execute in the terminal and terminate itself once finished.
- */
-new App()
+ *\/
+new Application()
     .fromAppRoot(__dirname)
     .consoleForLife()
+ */

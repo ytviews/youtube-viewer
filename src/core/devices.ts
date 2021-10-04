@@ -1,3 +1,5 @@
+import { Viewport } from 'puppeteer';
+
 const devices = [
   {
     name: 'Desktop 1920x1080',
@@ -1029,7 +1031,7 @@ const devices = [
   },
 ];
 
-const devicesMap = {};
+const devicesMap: {[key: string]: { userAgent: string; viewport: Viewport; }} = {};
 // @ts-ignore
 for (const device of devices) devicesMap[device.name] = device;
 

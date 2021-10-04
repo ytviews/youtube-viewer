@@ -1,8 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-
-const jsonSerialize = object => JSON.stringify(object, null, 2);
-const jsonDeserialize = string => JSON.parse(string);
+import JSON from '@httpie/json';
 
 
 export class Json {
@@ -16,10 +14,10 @@ export class Json {
         try {
             json = fs.readFileSync(this.filepath, 'utf8');
         } catch {}
-        return jsonDeserialize(json)
+        return JSON.parse(json)
     }
 
     public save(object: object) {
-        fs.writeFileSync(this.filepath, jsonSerialize(object))
+        fs.writeFileSync(this.filepath, JSON.stringify(object, undefined, 2))
     }
 }

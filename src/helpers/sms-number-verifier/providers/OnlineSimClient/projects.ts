@@ -1,5 +1,6 @@
 'use strict'
 
+// @ts-ignore
 const services = [
     { service: 'Google' },
     { service: 'Facebook' },
@@ -427,6 +428,7 @@ export const countryCodes: Map<string, number> = new Map([
     ['italy', 39]
 ]);
 
+// @ts-ignore
 const countriesCodes = new Set([
     7,	    // russia
     380,	// ukraine

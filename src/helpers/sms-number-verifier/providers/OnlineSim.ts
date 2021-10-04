@@ -1,14 +1,9 @@
+// @ts-ignore
 import parseMessage from 'parse-otp-message';
 import Provider from './Provider';
-import OnlineSimClient, { IOptions } from './OnlineSimClient';
+import OnlineSimClient from './OnlineSimClient';
+import { IOptions, INumberOptions, ISMSOptions } from '../../../interfaces';
 import { logger } from '../../../utils';
-
-interface IReturn {
-    tzid?: number
-    number: string;
-    full_number: string
-    country: number
-}
 
 // https://github.com/transitive-bullshit/puppeteer-email/tree/master
 // https://github.com/dragoroff/official/tree/master/Projects/gunshot-client
@@ -27,18 +22,16 @@ export default class OnlineSimProvider extends Provider {
         return 'onlinesim';
     }
 
-    async getNumbers (options) {
+    async getNumbers (options: INumberOptions): Promise<any> {
         const result = await this._client.getNumber(options)
         return [ result ]
     }
 
-    public async getMessages(options: IReturn) {
+    public async getMessages(options: ISMSOptions): Promise<any|undefined> {
         const text = (await this._client.getSMS(options)).trim()
         logger.info('OnlineSim.getMessages', text)
 
-        if (text === '') {
-            return
-        }
+        if (text === '') return
 
         if (text) {
             const result = parseMessage(text)

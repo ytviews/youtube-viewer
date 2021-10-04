@@ -14,7 +14,7 @@ import { getProviderByName } from './Providers';
 export default class SMSNumberVerifier {
     _provider: Provider
     _timestamp: Date
-    constructor (provider, options = { }) {
+    constructor (provider: string|Provider, options = { }) {
         this._provider = provider instanceof Provider
             ? provider
             : getProviderByName(provider, options)
@@ -39,11 +39,11 @@ export default class SMSNumberVerifier {
         let numbers: Array = await this._provider.getNumbers(rest)
 
         if (blacklist) {
-            numbers = numbers.filter((number) => !blacklist.has(number))
+            numbers = numbers.filter((number: any) => !blacklist.has(number))
         }
 
         if (whitelist) {
-            numbers = numbers.filter((number) => whitelist.has(number))
+            numbers = numbers.filter((number: any) => whitelist.has(number))
         }
 
         return numbers[Math.floor(Math.random() * numbers.length)]
@@ -52,7 +52,7 @@ export default class SMSNumberVerifier {
     /**
      * @return {Promise<Array<string>>}
      */
-    async getAuthCodes (options) {
+    async getAuthCodes (options: any) {
         const {
             retries = 3,
             minTimeout = 5000,
@@ -69,9 +69,9 @@ export default class SMSNumberVerifier {
             const messages: Array = await this._provider.getMessages({ number, service, ...rest, attempt })
 
             const results = (messages || [])
-                .filter((m) => m.service === service)
-                .filter((m) => !timestamp || m.timestamp >= timestamp)
-                .map((m) => m.code)
+                .filter((m: any) => m.service === service)
+                .filter((m: any) => !timestamp || m.timestamp >= timestamp)
+                .map((m: any) => m.code)
 
             if (!results.length) {
                 ++attempt
@@ -92,7 +92,7 @@ export default class SMSNumberVerifier {
      * @param {string} number - Phone number to parse
      * @return {object}
      */
-    getNumberInfo (number) {
+    getNumberInfo (number: string) {
         number = number.trim()
 
         if (!number.startsWith('+')) {

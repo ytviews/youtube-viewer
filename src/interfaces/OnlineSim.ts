@@ -2,6 +2,16 @@ type IStateOneType =
     |'repeat'
     | 'index'
 
+export interface IMessage {
+    from: string,
+    to: string,
+    text: string,
+    id: string,
+    code?: string
+    service?: string
+    timestamp: Date
+}
+
 export interface IOptions {
     token: string|null
     country?: string
@@ -24,6 +34,8 @@ export interface ISMSOptions {
     service?: string;
     timeout?: number;
     not_end?: boolean;
+    country?: number;
+    full_number?: string
     full_message?: boolean;
 }
 

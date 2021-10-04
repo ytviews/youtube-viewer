@@ -1,5 +1,5 @@
 import { v4 } from 'uuid';
-import { BrowserPage } from "../../interfaces/Browser";
+import { BrowserPage } from '../../interfaces';
 
 export class Congolese extends BrowserPage {
 
@@ -15,6 +15,7 @@ export class Congolese extends BrowserPage {
         const CollectionNames = await this.page.puppeteer.evaluate(() => {
             const elements = document.getElementsByClassName('name-card');
             const e_a = [...elements]
+            // @ts-ignore
             const arr = []
             e_a.map(e => {
                 // @ts-ignore
@@ -23,10 +24,13 @@ export class Congolese extends BrowserPage {
                     .trim()
                     .split(' ');
                 arr.push({
+                    // @ts-ignore
                     firstName: cname[0],
+                    // @ts-ignore
                     lastName: cname[1],
                 });
             });
+            // @ts-ignore
             return arr
         });
 

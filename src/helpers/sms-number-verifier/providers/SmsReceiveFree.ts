@@ -1,22 +1,15 @@
 'use strict'
 
 import cheerio from 'cheerio';
+// @ts-ignore
 import parseMessage from 'parse-otp-message';
+// @ts-ignore
 import parseTime from 'parsetime';
 import request from './request';
 import Provider from './Provider';
+import { ISMSOptions, IMessage } from '../../../interfaces';
 
 const baseUrl = 'https://smsreceivefree.com'
-
-interface IMessage {
-    from: string,
-    to: string,
-    text: string,
-    id: string,
-    code?: string
-    service?: string
-    timestamp: Date
-}
 
 export default class SMSReceiveFreeProvider extends Provider {
     get name () {
@@ -31,6 +24,7 @@ export default class SMSReceiveFreeProvider extends Provider {
         const $ = cheerio.load(html)
 
         return $('a.numbutton')
+            // @ts-ignore
             .map((i, a) => $(a).text())
             .get()
             .map((n) => {
@@ -40,7 +34,7 @@ export default class SMSReceiveFreeProvider extends Provider {
             .filter(Boolean)
     }
 
-    async getMessages (options) {
+    async getMessages (options: ISMSOptions): Promise<any> {
         const {
             number
         } = options
@@ -48,9 +42,12 @@ export default class SMSReceiveFreeProvider extends Provider {
         const html = await request(`${baseUrl}/info/${number}/`)
         const $ = cheerio.load(html)
 
+        // @ts-ignore
         return $('.msgTable tr')
+            // @ts-ignore
             .map((i, el) => {
                 const tds = $('td', $(el))
+                    // @ts-ignore
                     .map((i, e) => $(e).text())
                     .get()
 
@@ -65,6 +62,7 @@ export default class SMSReceiveFreeProvider extends Provider {
             })
             .get()
             .filter(Boolean)
+            // @ts-ignore
             .map((m: IMessage) => {
                 const result = parseMessage(m.text)
 

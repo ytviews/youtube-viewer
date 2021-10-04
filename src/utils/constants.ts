@@ -24,6 +24,7 @@ export const VIEW_ACTION_COUNT = 10;
 export const VIEW_DURATION = 530;
 export const PAGE_DEFAULT_TIMEOUT = 600;
 
+// @ts-ignore
 const extensions = {
     AdGuard: `${CHROMIUM_EXECUTABLE_PATH}/extensions/bgnkhhnnamicmpeenaelnjfhikgbkllg/3.3.2_0`,
     PageTimer: `${CHROMIUM_EXECUTABLE_PATH}/extensions/enljfpkeopdppbphgadibdpodgjhmabm/1.7_0`,

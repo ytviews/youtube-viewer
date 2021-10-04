@@ -5,7 +5,8 @@ export const providers = {
     onlinesim: require('./providers/OnlineSim'),
 }
 
-export const getProviderByName = (provider: string, options) => {
+export const getProviderByName = (provider: string, options: any) => {
+    // @ts-ignore
     const { default: Provider } = providers[provider.toLowerCase()]
 
     if (!Provider) throw new Error(`unrecognized provider "${provider}"`)

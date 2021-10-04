@@ -1,3 +1,4 @@
+import { INumberOptions, ISMSOptions } from '../../../interfaces';
 /**
  * Abstract base class for SMS OTP providers.
  */
@@ -12,10 +13,10 @@ export default abstract class Provider {
     /**
      */
     // @ts-ignore
-    abstract async getNumbers (options): Promise<Array<any>> | Error
+    abstract async getNumbers (options: INumberOptions): Promise<Array<any>> | Error
 
     /**
      */
     // @ts-ignore
-    abstract async getMessages (options): Promise<Array<any>> | Error
+    abstract async getMessages (options: ISMSOptions): Promise<Array<any>> | Error
 }

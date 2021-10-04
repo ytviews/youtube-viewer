@@ -12,6 +12,7 @@ import * as AnonymizeUA from 'puppeteer-extra-plugin-anonymize-ua';
 import * as UserDataDir from 'puppeteer-extra-plugin-user-data-dir';
 // @ts-ignore
 import * as puppeteerPrefs from 'puppeteer-extra-plugin-user-preferences';
+// @ts-ignore
 import * as UserAgent from 'user-agents';
 import { BrowserContext } from './BrowserContext';
 import {
@@ -23,7 +24,7 @@ import {
     isProduction
 } from '../../utils/constants';
 import { logger } from '../../utils';
-import {f} from "@cliqz/adblocker-puppeteer";
+// import {f} from "@cliqz/adblocker-puppeteer";
 
 process.setMaxListeners(Infinity);
 
@@ -40,10 +41,13 @@ process.setMaxListeners(Infinity);
 export type GoToOptions = Parameters<Page[ 'goto' ]>[ 1 ] & { retry?: number; };
 
 export default class Browser {
+    // @ts-ignore
     private puppeteerBrowser: PuppeteerBrowser;
+    // @ts-ignore
     private puppeteer: PuppeteerExtra;
     defaultViewPort: Viewport;
     contexts: BrowserContext[];
+    // @ts-ignore
     private readonly name: string
     private readonly port: number
     static timeout = TIMEOUT;

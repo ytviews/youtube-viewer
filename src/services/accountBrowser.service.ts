@@ -1,13 +1,12 @@
 import * as path from 'path';
-import fetch from 'cross-fetch';
-import { PuppeteerBlocker } from '@cliqz/adblocker-puppeteer';
+// import fetch from 'cross-fetch';
+// import { PuppeteerBlocker } from '@cliqz/adblocker-puppeteer';
 import { shuffle, take } from 'lodash';
 import Browser from '../core/browser/Browser';
 import Account from '../core/accounts/Account';
 import { BrowserContext } from '../core/browser/BrowserContext';
 import { PublicAddress, YoutubeActions, Congolese } from '../helpers';
-import { ICollectionNames } from '../interfaces/Accounts';
-import { IPublicIp } from '../interfaces/PublicIp';
+import { IPublicIp, ICollectionNames } from '../interfaces';
 import { logger, sleep } from '../utils';
 import {
   VIEW_ACTION_COUNT,
@@ -79,6 +78,7 @@ export const accountYouTubeInBatch = async ({ accounts, port }: any) => {
     logger.warn('Entire view action in a batch failed. Waiting for TOR to acquire a new set of IPs');
     logger.error(error);
   } finally {
+    // @ts-ignore
     await browser.close();
   }
 };

@@ -8,6 +8,7 @@ export class BrowserContext {
     name: string;
     type: string;
     pages: Page[];
+    // @ts-ignore
     puppeteerBrowserContext: PuppeteerBrowserContext;
     puppeteerBrowser: PuppeteerBrowser;
 

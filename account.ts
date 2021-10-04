@@ -9,13 +9,16 @@ import {
   URL_JSON_FILE_YOUTUBE,
 } from './src/utils/constants';
 
+// https://github.com/try1975/RegBot
 // https://github.com/ytviews/ProxyScraper
 // https://github.com/Start9Labs/capacitor-tor
 // https://github.com/Start9Labs/cups-shell
+// https://github.com/pierreminiggio/youtube-video-watcher/blob/master/watch.js
 // https://github.com/ResistancePlatform/resistance-desktop-wallet/blob/develop/app/service/tor-service.js
 // https://github.com/viocost/islands-poc/blob/master/poc/VMpoc/CLIENTTOR1/clijs/tor-router/TorProcess.js
 // https://github.com/s00d/onlinesim-js-api
-// 
+// https://github.com/dragoroff/official/blob/master/Projects/gunshot-client/helpers/SignIn.js
+//
 async function main() {
   try {
     const accounts = urlReader(URL_JSON_FILE_YOUTUBE);

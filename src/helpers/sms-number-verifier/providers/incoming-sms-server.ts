@@ -7,18 +7,21 @@ import ngrok from 'ngrok';
 import parse from 'co-body';
 import pify from 'pify';
 
-const noop = (m) => m
+const noop = (m: any) => m
 const route = '/1/messages'
 
 export default class IncomingSMSServer extends EventEmitter {
-    _port: number
-    _app: Koa
-    _router: Router
+    private _port: number
+    private _app: Koa
+    private _router: Router
+    // @ts-ignore
     method: string
+    // @ts-ignore
     uri: string
+    // @ts-ignore
     url: string
 
-    constructor (options) {
+    constructor (options: any) {
         super()
         const {
             port = process.env.PORT || 11849,
@@ -53,6 +56,7 @@ export default class IncomingSMSServer extends EventEmitter {
 
     async close () {
         await ngrok.disconnect()
+        // @ts-ignore
         await pify(this._app.close)()
     }
 }

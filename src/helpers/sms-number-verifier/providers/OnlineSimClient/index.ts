@@ -7,7 +7,7 @@ import {
     INumberOptions,
     IStateOneOptions,
     ITariffCountryOne,
-} from '../../../../interfaces/OnlineSim';
+} from '../../../../interfaces';
 import _BaseRequest from '../_Base';
 
 // https://github.com/s00d/onlinesim-js-api/blob/master/src/Apis/GetNumbers.ts
@@ -73,7 +73,7 @@ export default class OnlineSimClient extends _BaseRequest {
      * @param {string} [options.country] - Country code (required)
      * @return {Promise}
      */
-    async getNumber (options: INumberOptions): Promise<{tzid: number, number: string, country: number}> {
+    async getNumber (options: INumberOptions): Promise<{tzid: number, number: string, country: number|undefined}> {
         let {
             service,
             country,
@@ -117,6 +117,7 @@ export default class OnlineSimClient extends _BaseRequest {
         msg_list = true,
         clean = true,
         repeat = false): Promise<Array<IStateOne>> {
+        // @ts-ignore
         return this._request('getStatus', {
             message_to_code,
             orderby,
@@ -191,9 +192,10 @@ export default class OnlineSimClient extends _BaseRequest {
     /**
      *
      * @param {number} country
-     * @return {Promise<ITariffCountryOne>}
+     * @return {Promise<Response | ITariffCountryOne>}
      */
-    tariffsOne(country: number = 7): Promise<ITariffCountryOne> {
+    tariffsOne(country: number = 7): Promise<Response | ITariffCountryOne> {
+        // @ts-ignore
         return this._request('getNumbersStats', {country}).then((response) => response)
     }
 

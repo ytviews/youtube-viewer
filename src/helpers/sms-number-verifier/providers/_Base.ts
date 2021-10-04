@@ -3,7 +3,7 @@ import {
     NoNumberException,
     RequestException
 } from '../../../exceptions/GetPhoneNumberError';
-import { IOptions } from '../../../interfaces/OnlineSim';
+import { IOptions } from '../../../interfaces';
 import { countryCodes } from './OnlineSimClient/projects';
 
 export interface Response {
@@ -12,7 +12,7 @@ export interface Response {
     [key: number]: any
 }
 
-const domainToSuffix = {
+const domainToSuffix: {[key: string]: string} = {
     getServiceList: 'getServiceList',
     getNumber: 'getNum',
     getStatus: 'getState',
@@ -24,11 +24,11 @@ const domainToSuffix = {
 
 export default class _BaseRequest {
     protected _url: string;
-    protected _token: string|null;
-    protected _country: number;
-    protected _service: string;
-    private _dev_id: number|null;
-    private _lang: string;
+    protected _token: string|null|undefined;
+    protected _country: number|undefined;
+    protected _service: string|undefined;
+    private _dev_id: number|null|undefined;
+    private _lang: string|undefined;
     private _headers: {[key: string]: string } = {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36'
     }
@@ -99,6 +99,7 @@ export default class _BaseRequest {
                 throw new RequestException(response.response.toString());
             }
 
+            // @ts-ignore
             delete response.response
             return response
         })
@@ -130,6 +131,7 @@ export default class _BaseRequest {
                 }
                 throw new RequestException(response.response.toString());
             }
+            // @ts-ignore
             delete response.response
             return response
         })
