@@ -4,14 +4,14 @@ const { isProduction, SHOULD_FORCE_DEBUG_LOGS } = require('./constants');
 
 const store = {};
 
-const info = (message) => console.log(`${chalk.white.inverse(` [${(new Date()).toLocaleTimeString()}] - INFO    `)} ${chalk.white(message)}`);
-const error = (message) => console.log(`${chalk.red.inverse(` [${(new Date()).toLocaleTimeString()}] - ERROR   `)} ${chalk.red(message)}`);
-const success = (message) => console.log(`${chalk.green.inverse(` [${(new Date()).toLocaleTimeString()}] - SUCCESS `)} ${chalk.green(message)}`);
-const debug = (message) => {
+const info = (...message) => console.log(`${chalk.white.inverse(` [${(new Date()).toLocaleTimeString()}] - INFO    `)} ${chalk.white(...message)}`);
+const error = (...message) => console.log(`${chalk.red.inverse(` [${(new Date()).toLocaleTimeString()}] - ERROR   `)} ${chalk.red(...message)}`);
+const success = (...message) => console.log(`${chalk.green.inverse(` [${(new Date()).toLocaleTimeString()}] - SUCCESS `)} ${chalk.green(...message)}`);
+const debug = (...message) => {
   if (!SHOULD_FORCE_DEBUG_LOGS && isProduction) return;
-  console.log(`${chalk.magenta.inverse(` [${(new Date()).toLocaleTimeString()}] - DEBUG   `)} ${chalk.magenta(message)}`);
+  console.log(`${chalk.magenta.inverse(` [${(new Date()).toLocaleTimeString()}] - DEBUG   `)} ${chalk.magenta(...message)}`);
 };
-const warn = (message) => console.log(`${chalk.yellow.inverse(` [${(new Date()).toLocaleTimeString()}] - WARN    `)} ${chalk.yellow(message)}`);
+const warn = (...message) => console.log(`${chalk.yellow.inverse(` [${(new Date()).toLocaleTimeString()}] - WARN    `)} ${chalk.yellow(...message)}`);
 
 const logFailedAttempt = (url, ipAddr) => {
   warn(`An attempt to view ${url} with IP: ${ipAddr} was probably blocked.`);

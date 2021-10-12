@@ -1,5 +1,5 @@
 // https://github.com/mbuyakov/SUI.CORE/blob/master/js/SUI.ALL/src/ioc/utils/Logger.ts
-import * as chalk from 'chalk';
+import chalk from 'chalk';
 import { Page } from "puppeteer";
 import { isProduction, SHOULD_FORCE_DEBUG_LOGS } from './constants';
 

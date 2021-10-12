@@ -5,7 +5,7 @@
   "scripts": {
     "build": "tsc --build tsconfig.json",
     "docker:build": "docker-compose build --no-cache",
-    "docker:start": "docker-compose up --scale",
+    "docker:start": "docker-compose up -d --scale",
     "docker:down": "docker-compose down",
     "start:prod": "NODE_ENV=production node viewer",
     "dev": "yarn build -- --watch",

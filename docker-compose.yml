@@ -3,6 +3,7 @@ services:
   ytview:
     build:
       context: .
+    image: youtube-viewer/ytview
     restart: unless-stopped
     logging:
       options:

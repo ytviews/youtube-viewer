@@ -24,11 +24,14 @@ const watchVideosInSequence = async (page, ipAddr, targetUrlsList, durationDefau
     await page.goto(target.url, { waitUntil: ['load', 'domcontentloaded', 'networkidle0', 'networkidle2'] });
 
     try {
+      await sleep(2);
       /** Close Cookie popup **/
-      await click(page, 'closeCookie');
+      await acceptCookie(page);
+      // await click(page, 'AcceptCookie');
+      // await click(page, 'closeCookie');
 
       /** Close Login popup **/
-      // await dismissLogin(page);
+      await dismissLogin(page);
       /** Accept Cookie **/
       // await acceptCookie(page);
       /** Get play btn selector and click **/

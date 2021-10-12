@@ -1,13 +1,14 @@
 import TorService from './src/services/tor.service';
 import startAccountHandler from './src/handlers/startAccount.handler';
 // @ts-ignore
-import { logger, urlReader } from './src/utils';
 import {
+  logger,
+  urlReader,
   START_PORT,
   TOTAL_COUNT,
   BATCH_COUNT,
   URL_JSON_FILE_YOUTUBE,
-} from './src/utils/constants';
+} from './src/utils';
 
 // https://github.com/try1975/RegBot
 // https://github.com/ytviews/ProxyScraper

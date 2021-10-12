@@ -3,11 +3,13 @@ export const isProduction = (process.env.NODE_ENV === 'production');
 export const SHOULD_FORCE_DEBUG_LOGS = process.env.YOUTUBE_VIEWER_FORCE_DEBUG;
 export const IP_GETTER_URL = 'https://api.myip.com';
 export const URL_JSON_FILE_NAME = 'urls.json';
+export const URL_FILE_PROXIES = 'src/config/socks5_proxies.txt';
 export const URL_JSON_FILE_YOUTUBE = 'src/config/youtube-admin.json';
 export const URL_JSON_FILE_YOUTUBE_ACCOUNTS = 'src/config/account.json';
 export const URL_KEYS_WORDS_FILE_NAME = 'keys-words.txt';
-export const CHROMIUM_EXECUTABLE_PATH = isProduction ? '/usr/bin/chromium-browser' : undefined
-export const YOUTUBE_LOGIN_URL = "https://accounts.google.com/signin/v2/identifier?service=youtube&uilel=3&passive=true&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3Dhttps%253A%252F%252Fwww.youtube.com%252F&hl=en&flowName=GlifWebSignIn&flowEntry=ServiceLogin"
+export const CHROMIUM_EXECUTABLE_PATH = isProduction ? '/usr/bin/chromium-browser' : undefined;
+export const YOUTUBE_LOGIN_URL = "https://accounts.google.com/signin/v2/identifier?service=youtube&uilel=3&passive=true&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3Dhttps%253A%252F%252Fwww.youtube.com%252F&hl=en&flowName=GlifWebSignIn&flowEntry=ServiceLogin";
+export const RE_PROXIES = /([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})(\s+|:)([0-9]{2,5})/g;
 
 /**
  * START_PORT - Port TOR will start using from for SOCKS proxy.
