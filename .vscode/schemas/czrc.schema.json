@@ -1,0 +1,145 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+
+  "definitions": {
+    "commitTypes": {
+      "enum": [
+        "build",
+        "chore",
+        "ci",
+        "docs",
+        "feat",
+        "fix",
+        "perf",
+        "refactor",
+        "revert",
+        "style",
+        "test"
+      ]
+    }
+  },
+
+  "properties": {
+    "defaultBody": {
+      "description": "The default commit body to use when unsupplied.",
+
+      "title": "defaultBody",
+
+      "type": "string"
+    },
+
+    "defaultIssues": {
+      "description": "The default commit issues to use when unsupplied.",
+
+      "title": "defaultIssues",
+
+      "type": "string"
+    },
+
+    "defaultScope": {
+      "description": "The default commit scope to use when unsupplied.",
+
+      "title": "defaultScope",
+
+      "type": "string"
+    },
+
+    "defaultSubject": {
+      "description": "The default commit subject to use when unsupplied.",
+
+      "title": "defaultSubject",
+
+      "type": "string"
+    },
+
+    "defaultType": {
+      "$ref": "#/definitions/commitTypes",
+
+      "description": "The default commit type to use when unsupplied.",
+
+      "title": "defaultType",
+
+      "type": "string"
+    },
+
+    "disableScopeLowerCase": {
+      "description": "Disable the default conversion of the commit scope to lowercase.",
+
+      "title": "disableScopeLowerCase",
+
+      "type": "boolean"
+    },
+
+    "disableSubjectLowerCase": {
+      "description": "Disable the default conversion of the commit subject to lowercase.",
+
+      "title": "disableSubjectLowerCase",
+
+      "type": "boolean"
+    },
+
+    "maxHeaderWidth": {
+      "description": "The maximum allowed length of the commit header.",
+
+      "title": "maxHeaderWidth",
+
+      "type": "number"
+    },
+
+    "maxLineWidth": {
+      "description": "The maximum allowed length of the commit line.",
+
+      "title": "maxLineWidth",
+
+      "type": "number"
+    },
+
+    "path": {
+      "description": "Path to the Commitizen adapter to use for commits.",
+
+      "title": "path",
+
+      "type": "string"
+    },
+
+    "types": {
+      "description": "A map of allowed commit types to their descriptions and titles.",
+
+      "patternProperties": {
+        "": {
+          "properties": {
+            "description": {
+              "description": "A long description of the commit type.",
+
+              "title": "description",
+
+              "type": "string"
+            },
+
+            "title": {
+              "description": "A descriptive title of the commit type.",
+
+              "title": "title",
+
+              "type": "string"
+            }
+          },
+
+          "type": "object"
+        }
+      },
+
+      "propertyNames": {
+        "$ref": "#/definitions/commitTypes"
+      },
+
+      "title": "types",
+
+      "type": "object"
+    }
+  },
+
+  "title": "JSON schema for Commitizen configuration files",
+
+  "type": "object"
+}

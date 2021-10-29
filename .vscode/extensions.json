@@ -1,0 +1,47 @@
+{
+  /***************************************************************************/
+  /*                                                                         */
+  /* `youtube-viewer`                                                         */
+  /* `Workspace`                                                             */
+  /* `extensions.json`                                                       */
+  /*                                                                         */
+  /***************************************************************************/
+
+  // List of extensions which should be recommended for users of this workspace.
+  // The identifier of an extension is always '${publisher}.${name}'.
+  // For example: 'vscode.csharp'.
+  "recommendations": [
+    "bradlc.vscode-tailwindcss",
+    "coenraads.bracket-pair-colorizer",
+    "csstools.postcss",
+    "dbaeumer.vscode-eslint",
+    "editorconfig.editorconfig",
+    "esbenp.prettier-vscode",
+    "johnpapa.vscode-peacock",
+    "jpoissonnier.vscode-styled-components",
+    "mindaro.mindaro",
+    "mindaro-dev.file-downloader",
+    "ms-azuretools.vscode-docker",
+    "ms-kubernetes-tools.vscode-kubernetes-tools",
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "ms-vscode-remote.remote-containers",
+    "ms-vscode-remote.remote-ssh",
+    "ms-vscode-remote.remote-ssh-edit",
+    "ms-vscode-remote.remote-wsl",
+    "ms-vscode-remote.vscode-remote-extensionpack",
+    "ms-vsliveshare.vsliveshare",
+    "ms-vsliveshare.vsliveshare-audio",
+    "ms-vsliveshare.vsliveshare-pack",
+    "mutantdino.resourcemonitor",
+    "orta.vscode-jest",
+    "redhat.vscode-yaml",
+    "stylelint.vscode-stylelint",
+    "vscode-icons-team.vscode-icons",
+    "wallabyjs.quokka-vscode"
+  ],
+
+  // List of extensions recommended by VS Code that should not be recommended for users of this workspace.
+  // The identifier of an extension is always '${publisher}.${name}'.
+  // For example: 'vscode.csharp'.
+  "unwantedRecommendations": []
+}

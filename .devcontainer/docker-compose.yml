@@ -1,0 +1,128 @@
+###############################################################################
+#                                                                             #
+# `youtube-viewer`                                                             #
+# `Container`                                                                 #
+# `docker-compose.yml`                                                        #
+#                                                                             #
+###############################################################################
+
+# Specify the compose format that this file conforms to.
+version: "3"
+
+# Specify the set of services that your app is composed of.
+services:
+  # The `youtube-viewer` service.
+  ytview:
+    # Configuration options that are applied at build time.
+    # Can be specified either as
+    # a string containing a path to the build context,
+    # or an object with the path specified under context
+    # and optionally dockerfile and args.
+    build:
+      # Add build arguments,
+      # which are environment variables
+      # accessible only during the build process.
+      args:
+        #######################################################################
+        # [from]                                                              #
+        #######################################################################
+
+        # The IMAGE_REPOSITORY to use.
+        DEVCONTAINER_IMAGE_REPOSITORY: "${DEVCONTAINER_IMAGE_REPOSITORY}"
+
+        # The IMAGE_TAG_VERSION to use.
+        DEVCONTAINER_IMAGE_TAG_VERSION: "${DEVCONTAINER_IMAGE_TAG_VERSION}"
+
+        #######################################################################
+        # [arg]                                                               #
+        #######################################################################
+
+        # The DOCKER_COMMAND to use.
+        DEVCONTAINER_DOCKER_COMMAND: "${DEVCONTAINER_DOCKER_COMMAND}"
+
+        # The DOCKER_COPY_DEST to use.
+        DEVCONTAINER_DOCKER_COPY_DEST: "${DEVCONTAINER_DOCKER_COPY_DEST}"
+
+        # The DOCKER_COPY_SRC to use.
+        DEVCONTAINER_DOCKER_COPY_SRC: "${DEVCONTAINER_DOCKER_COPY_SRC}"
+
+        # The DOCKER_CREATE_ENTRYPOINT to use.
+        DEVCONTAINER_DOCKER_CREATE_ENTRYPOINT: "${DEVCONTAINER_DOCKER_CREATE_ENTRYPOINT}"
+
+        # The DOCKER_ENTRYPOINT to use.
+        DEVCONTAINER_DOCKER_ENTRYPOINT: "${DEVCONTAINER_DOCKER_ENTRYPOINT}"
+
+        # The DOCKER_RUN to use.
+        DEVCONTAINER_DOCKER_RUN: "${DEVCONTAINER_DOCKER_RUN}"
+
+        # The DOCKER_SOCKET to use.
+        DEVCONTAINER_DOCKER_SOCKET: "${DEVCONTAINER_DOCKER_SOCKET}"
+
+        # The DOCKER_SOCKET_HOST to use.
+        DEVCONTAINER_DOCKER_SOCKET_HOST: "${DEVCONTAINER_DOCKER_SOCKET_HOST}"
+
+        # The ENV_NODE_VERSION to use.
+        DEVCONTAINER_ENV_NODE_VERSION: "${DEVCONTAINER_ENV_NODE_VERSION}"
+
+        # The ENV_YARN_VERSION to use.
+        DEVCONTAINER_ENV_YARN_VERSION: "${DEVCONTAINER_ENV_YARN_VERSION}"
+
+        # The OH_MY_ZSH_PLUGINS to use.
+        DEVCONTAINER_OH_MY_ZSH_PLUGINS: "${DEVCONTAINER_OH_MY_ZSH_PLUGINS}"
+
+        # The OH_MY_ZSH_THEME to use.
+        DEVCONTAINER_OH_MY_ZSH_THEME: "${DEVCONTAINER_OH_MY_ZSH_THEME}"
+
+        # The USER_GID to use.
+        DEVCONTAINER_USER_GID: "${DEVCONTAINER_USER_GID}"
+
+        # The USER_GROUP to use.
+        DEVCONTAINER_USER_GROUP: "${DEVCONTAINER_USER_GROUP}"
+
+        # The USER_NAME to use.
+        DEVCONTAINER_USER_NAME: "${DEVCONTAINER_USER_NAME}"
+
+        # The USER_UID to use.
+        DEVCONTAINER_USER_UID: "${DEVCONTAINER_USER_UID}"
+
+      # Either a path to a directory containing a Dockerfile,
+      # or a url to a git repository.
+      # This directory will be used as the build context that
+      # is sent to the Docker daemon.
+      context: .
+
+      # Alternate Dockerfile.
+      # Compose will use an alternate file to build with.
+      # Using dockerfile together with image is not allowed.
+      # Attempting to do so results in an error.
+      dockerfile: Dockerfile
+
+    # Override the default command.
+    command: "${DEVCONTAINER_DOCKER_COMMAND}"
+
+    # Overwrite the default ENTRYPOINT of the image.
+    entrypoint: "${DEVCONTAINER_DOCKER_ENTRYPOINT}"
+
+    # Run an init inside the container that
+    # forwards signals and reaps processes.
+    init: true
+
+    # Networking mode.
+    # Use the same values as the docker client --net parameter.
+    network_mode: "host"
+
+    # Give extended privileges to this container.
+    privileged: true
+
+    # Username or UID (format: <name|uid>[:<group|gid>]).
+    # user: vagrant
+
+    # Specifies the volumes to be created as part of your app.
+    # This is analogous to running `docker volume create`.
+    volumes:
+      # Update this to wherever you want VS Code
+      # to mount the folder of your project.
+      # - /vagrant:/vagrant:cached
+      - ..:/vagrant:cached
+      # Forwards the local Docker socket to the container.
+      - /var/run/docker.sock:/var/run/docker-host.sock

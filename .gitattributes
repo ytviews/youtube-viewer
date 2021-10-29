@@ -1,2 +1,89 @@
-# Auto detect text files and perform LF normalization
+###############################################################################
+#                                                                             #
+# `youtube-viewer`                                                             #
+# `Workspace`                                                                 #
+# `.gitattributes`                                                            #
+#                                                                             #
+###############################################################################
+
+# Attributes for all files.
 * text=auto
+
+# Attributes for .*ignore files.
+*.*ignore text eol=lf whitespace=-blank-at-eof,blank-at-eol,-cr-at-eol,-indent-with-non-tab,-space-before-tab,tab-in-indent,tabwidth=2 working-tree-encoding=UTF-8
+
+# Attributes for .*rc files.
+*.*rc text eol=lf whitespace=-blank-at-eof,blank-at-eol,-cr-at-eol,-indent-with-non-tab,-space-before-tab,tab-in-indent,tabwidth=2 working-tree-encoding=UTF-8
+
+# Attributes for .cjs files.
+*.cjs text eol=lf whitespace=-blank-at-eof,blank-at-eol,-cr-at-eol,-indent-with-non-tab,-space-before-tab,tab-in-indent,tabwidth=2 working-tree-encoding=UTF-8
+
+# Attributes for .css files.
+*.css text eol=lf whitespace=-blank-at-eof,blank-at-eol,-cr-at-eol,-indent-with-non-tab,-space-before-tab,tab-in-indent,tabwidth=2 working-tree-encoding=UTF-8
+
+# Attributes for .env files.
+*.env text eol=lf whitespace=-blank-at-eof,blank-at-eol,-cr-at-eol,-indent-with-non-tab,-space-before-tab,tab-in-indent,tabwidth=2 working-tree-encoding=UTF-8
+
+# Attributes for .html files.
+*.html text eol=lf whitespace=-blank-at-eof,blank-at-eol,-cr-at-eol,-indent-with-non-tab,-space-before-tab,tab-in-indent,tabwidth=2 working-tree-encoding=UTF-8
+
+# Attributes for .ico files.
+*.ico binary
+
+# Attributes for .info files.
+*.info text eol=lf whitespace=-blank-at-eof,blank-at-eol,-cr-at-eol,-indent-with-non-tab,-space-before-tab,tab-in-indent,tabwidth=2 working-tree-encoding=UTF-8
+
+# Attributes for .js files.
+*.js text eol=lf whitespace=-blank-at-eof,blank-at-eol,-cr-at-eol,-indent-with-non-tab,-space-before-tab,tab-in-indent,tabwidth=2 working-tree-encoding=UTF-8
+
+# Attributes for .json files.
+*.json text eol=lf whitespace=-blank-at-eof,blank-at-eol,-cr-at-eol,-indent-with-non-tab,-space-before-tab,tab-in-indent,tabwidth=2 working-tree-encoding=UTF-8
+
+# Attributes for .json5 files.
+*.json5 text eol=lf whitespace=-blank-at-eof,blank-at-eol,-cr-at-eol,-indent-with-non-tab,-space-before-tab,tab-in-indent,tabwidth=2 working-tree-encoding=UTF-8
+
+# Attributes for .jsx files.
+*.jsx text eol=lf whitespace=-blank-at-eof,blank-at-eol,-cr-at-eol,-indent-with-non-tab,-space-before-tab,tab-in-indent,tabwidth=2 working-tree-encoding=UTF-8
+
+# Attributes for .lock files.
+*.lock text eol=lf whitespace=-blank-at-eof,blank-at-eol,-cr-at-eol,-indent-with-non-tab,-space-before-tab,tab-in-indent,tabwidth=2 working-tree-encoding=UTF-8
+
+# Attributes for .md files.
+*.md text eol=lf whitespace=-blank-at-eof,blank-at-eol,-cr-at-eol,-indent-with-non-tab,-space-before-tab,tab-in-indent,tabwidth=2 working-tree-encoding=UTF-8
+
+# Attributes for .mjs files.
+*.mjs text eol=lf whitespace=-blank-at-eof,blank-at-eol,-cr-at-eol,-indent-with-non-tab,-space-before-tab,tab-in-indent,tabwidth=2 working-tree-encoding=UTF-8
+
+# Attributes for .png files.
+*.png binary
+
+# Attributes for .sass files.
+*.sass text eol=lf whitespace=-blank-at-eof,blank-at-eol,-cr-at-eol,-indent-with-non-tab,-space-before-tab,tab-in-indent,tabwidth=2 working-tree-encoding=UTF-8
+
+# Attributes for .scss files.
+*.scss text eol=lf whitespace=-blank-at-eof,blank-at-eol,-cr-at-eol,-indent-with-non-tab,-space-before-tab,tab-in-indent,tabwidth=2 working-tree-encoding=UTF-8
+
+# Attributes for .svg files.
+# *.svg binary
+*.svg text eol=lf whitespace=-blank-at-eof,blank-at-eol,-cr-at-eol,-indent-with-non-tab,-space-before-tab,tab-in-indent,tabwidth=2 working-tree-encoding=UTF-8
+
+# Attributes for .ts files.
+*.ts text eol=lf whitespace=-blank-at-eof,blank-at-eol,-cr-at-eol,-indent-with-non-tab,-space-before-tab,tab-in-indent,tabwidth=2 working-tree-encoding=UTF-8
+
+# Attributes for .tsx files.
+*.tsx text eol=lf whitespace=-blank-at-eof,blank-at-eol,-cr-at-eol,-indent-with-non-tab,-space-before-tab,tab-in-indent,tabwidth=2 working-tree-encoding=UTF-8
+
+# Attributes for .xml files.
+*.xml text eol=lf whitespace=-blank-at-eof,blank-at-eol,-cr-at-eol,-indent-with-non-tab,-space-before-tab,tab-in-indent,tabwidth=2 working-tree-encoding=UTF-8
+
+# Attributes for .yml files.
+*.yml text eol=lf whitespace=-blank-at-eof,blank-at-eol,-cr-at-eol,-indent-with-non-tab,-space-before-tab,tab-in-indent,tabwidth=2 working-tree-encoding=UTF-8
+
+# Attributes for .editorconfig files.
+.editorconfig text eol=lf whitespace=-blank-at-eof,blank-at-eol,-cr-at-eol,-indent-with-non-tab,-space-before-tab,tab-in-indent,tabwidth=2 working-tree-encoding=UTF-8
+
+# Attributes for .gitattributes files.
+.gitattributes text eol=lf whitespace=-blank-at-eof,blank-at-eol,-cr-at-eol,-indent-with-non-tab,-space-before-tab,tab-in-indent,tabwidth=2 working-tree-encoding=UTF-8
+
+# Attributes for Dockerfile files.
+Dockerfile text eol=lf whitespace=-blank-at-eof,blank-at-eol,-cr-at-eol,-indent-with-non-tab,-space-before-tab,tab-in-indent,tabwidth=2 working-tree-encoding=UTF-8

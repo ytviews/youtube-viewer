@@ -1,0 +1,685 @@
+{
+  /***************************************************************************/
+  /*                                                                         */
+  /* `youtube-viewer`                                                         */
+  /* `Workspace`                                                             */
+  /* `settings.json`                                                         */
+  /*                                                                         */
+  /***************************************************************************/
+
+  /* `[<language>]` */
+
+  // Configure editor settings to be overridden for `javascript`.
+  "[javascript]": {
+    // The number of spaces a tab is equal to.
+    // This setting is overridden based on the file contents when #editor.detectIndentation# is on.
+    "editor.tabSize": 2
+  },
+
+  // Configure editor settings to be overridden for `javascriptreact`.
+  "[javascriptreact]": {
+    // The number of spaces a tab is equal to.
+    // This setting is overridden based on the file contents when #editor.detectIndentation# is on.
+    "editor.tabSize": 2
+  },
+
+  // Configure editor settings to be overridden for `json`.
+  "[json]": {
+    // The number of spaces a tab is equal to.
+    // This setting is overridden based on the file contents when #editor.detectIndentation# is on.
+    "editor.tabSize": 2
+  },
+
+  // Configure editor settings to be overridden for `jsonc`.
+  "[jsonc]": {
+    // The number of spaces a tab is equal to.
+    // This setting is overridden based on the file contents when #editor.detectIndentation# is on.
+    "editor.tabSize": 2
+  },
+
+  // Configure editor settings to be overridden for `typescript`.
+  "[typescript]": {
+    // The number of spaces a tab is equal to.
+    // This setting is overridden based on the file contents when #editor.detectIndentation# is on.
+    "editor.tabSize": 2
+  },
+
+  // Configure editor settings to be overridden for `typescriptreact`.
+  "[typescriptreact]": {
+    // The number of spaces a tab is equal to.
+    // This setting is overridden based on the file contents when #editor.detectIndentation# is on.
+    "editor.tabSize": 2
+  },
+
+  /* `debug` */
+
+  // Allow setting breakpoints in any file.
+  "debug.allowBreakpointsEverywhere": true,
+
+  // Show variable values inline in editor while debugging.
+  "debug.inlineValues": true,
+
+  /* `editor` */
+
+  // Controls whether suggestions should be accepted on commit characters.
+  // For example, in JavaScript, the semi-colon (;) can be a commit character
+  // that accepts a suggestion and types that character.
+  "editor.acceptSuggestionOnCommitCharacter": false,
+
+  // Controls whether suggestions should be accepted on Enter, in addition to Tab.
+  // Helps to avoid ambiguity between inserting new lines or accepting suggestions.
+  "editor.acceptSuggestionOnEnter": "off",
+
+  // Controls whether the editor should allow moving selections via drag and drop.
+  "editor.dragAndDrop": false,
+
+  // Controls whether the minimap is shown.
+  "editor.minimap.enabled": false,
+
+  // Controls how the editor should render whitespace characters.
+  "editor.renderWhitespace": "boundary",
+
+  /* `explorer` */
+
+  // Controls whether the explorer should allow to move files and folders via drag and drop.
+  "explorer.enableDragAndDrop": false,
+
+  // Number of editors shown in the Open Editors pane.
+  "explorer.openEditors.visible": 0,
+
+  /* `files` */
+
+  // The default end of line character.
+  "files.eol": "\n",
+
+  /* `npm` */
+
+  // Enable running npm scripts contained in a folder from the Explorer context menu.
+  "npm.enableRunFromFolder": true,
+
+  // The package manager used to run scripts.
+  "npm.packageManager": "yarn",
+
+  /* `typescript` */
+
+  // Enables prompting of users to use the TypeScript version configured in the workspace for Intellisense.
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+
+  // Specifies the folder path to the tsserver and lib*.d.ts files under a TypeScript install to use for IntelliSense,
+  // for example: ./node_modules/typescript/lib.
+  // "typescript.tsdk": "node_modules/typescript/lib",
+
+  // (Experimental) Enables project wide error reporting.
+  "typescript.tsserver.experimental.enableProjectDiagnostics": false,
+
+  // Enables logging of the TS server to a file.
+  // This log can be used to diagnose TS Server issues.
+  // The log may contain file paths, source code, and other potentially sensitive information from your project.
+  "typescript.tsserver.log": "verbose",
+
+  // Set the maximum amount of memory (in MB) to allocate to the TypeScript server process.
+  // "typescript.tsserver.maxTsServerMemory": 1024, // 1 GB
+  // "typescript.tsserver.maxTsServerMemory": 2048, // 2 GB
+  // "typescript.tsserver.maxTsServerMemory": 3072, // 3 GB (default)
+  // "typescript.tsserver.maxTsServerMemory": 4096, // 4 GB
+  // "typescript.tsserver.maxTsServerMemory": 8192, // 8 GB
+  // "typescript.tsserver.maxTsServerMemory": 16384, // 16 GB
+  // "typescript.tsserver.maxTsServerMemory": 32768, // 32 GB
+  // "typescript.tsserver.maxTsServerMemory": 65536, // 64 GB
+  // "typescript.tsserver.maxTsServerMemory": 131072, // 128 GB
+  // "typescript.tsserver.maxTsServerMemory": 262144, // 256 GB
+  // "typescript.tsserver.maxTsServerMemory": 524288, // 512 GB
+  // "typescript.tsserver.maxTsServerMemory": 1048576, // 1 TB
+
+  // Enables tracing of messages sent to the TS server.
+  // This trace can be used to diagnose TS Server issues.
+  // The trace may contain file paths, source code, and other potentially sensitive information from your project.
+  "typescript.tsserver.trace": "verbose",
+
+  // Enable/disable spawning a separate TypeScript server that can more quickly respond to syntax related operations,
+  // such as calculating folding or computing document symbols.
+  // Requires using TypeScript 3.4.0 or newer in the workspace.
+  "typescript.tsserver.useSeparateSyntaxServer": true,
+
+  /* `workbench` */
+
+  // Controls whether opened editors show as preview.
+  // Preview editors are reused until they are explicitly set to be kept open
+  // (e.g. via double click or editing) and show up with an italic font style.
+  "workbench.editor.enablePreview": false,
+
+  // Controls whether editors opened from Quick Open show as preview.
+  // Preview editors are reused until they are explicitly set to be kept open
+  // (e.g. via double click or editing).
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+
+  // Controls whether tabs are closed in most recently used order or from left to right.
+  "workbench.editor.focusRecentEditorAfterClose": false,
+
+  /***************************************************************************/
+  /*                                                                         */
+  /* `youtube-viewer`                                                         */
+  /* `Workspace`                                                             */
+  /* `Extensions`                                                            */
+  /* `devcontainer.json`                                                     */
+  /*                                                                         */
+  /***************************************************************************/
+
+  /* `docker` */
+
+  // Equivalent to setting the DOCKER_HOST environment variable,
+  // for example, ssh://myuser@mymachine or tcp://1.2.3.4.
+  // "docker.host": "ssh://vagrant@vagrant:2222",
+
+  /* `editor` */
+
+  // Defines a default formatter which takes precedence over all other formatter settings.
+  // Must be the identifier of an extension contributing a formatter.
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  /* `eslint` */
+
+  // Always show the ESlint status bar item.
+  "eslint.alwaysShowStatus": true,
+
+  // Enables ESLint as a formatter.
+  "eslint.format.enable": true,
+
+  // Controls whether a task for linting the whole workspace will be available.
+  "eslint.lintTask.enable": true,
+
+  // The package manager you use to install node modules.
+  "eslint.packageManager": "yarn",
+
+  /* `files` */
+
+  // Configure file associations to languages (e.g. "*.extension": "html").
+  // These have precedence over the default associations of the languages installed.
+  "files.associations": {
+    /* `babel` */
+
+    // Associate language to `.babelrc`.
+    ".babelrc": "jsonc",
+    ".babelrc.json": "jsonc",
+    "babel.config.json": "jsonc",
+
+    /* `commitizen` */
+
+    // Associate language to `.czrc`.
+    ".czrc": "jsonc",
+    ".cz.json": "jsonc",
+
+    /* `commitlint` */
+
+    // Associate language to `.commitlintrc.json`.
+    ".commitlintrc.json": "jsonc",
+
+    /* `eslint` */
+
+    // Associate language to `.eslintrc`.
+    ".eslintrc": "jsonc",
+    ".eslintrc.json": "jsonc",
+
+    /* `husky` */
+
+    // Associate language to `.huskyrc`.
+    ".huskyrc": "jsonc",
+    ".huskyrc.json": "jsonc",
+
+    /* `jsconfig` */
+
+    // Associate language to `jsconfig.json`.
+    "jsconfig.json": "jsonc",
+
+    /* `lerna` */
+
+    // Associate language to `lerna.json`.
+    "lerna.json": "jsonc",
+
+    /* `lint-staged` */
+
+    // Associate language to `.lintstagedrc`.
+    ".lintstagedrc": "jsonc",
+    ".lintstagedrc.json": "jsonc",
+
+    /* `npm` */
+
+    // Associate language to `package.json`.
+    "package.json": "jsonc",
+
+    /* `prettier` */
+
+    // Associate language to `.prettierrc`.
+    ".prettierrc": "json",
+    ".prettierrc.json": "json",
+    ".prettierrc.json5": "jsonc",
+
+    /* `serve` */
+
+    // Associate language to `serve.json`.
+    "serve.json": "jsonc",
+
+    /* `stylelint` */
+
+    // Associate language to `.stylelintrc`.
+    ".stylelintrc": "jsonc",
+    ".stylelintrc.json": "jsonc",
+
+    /* `tsconfig` */
+
+    // Associate language to `tsconfig.json`.
+    "tsconfig.json": "jsonc",
+
+    /* `tslint` */
+
+    // Associate language to `tslint.json`.
+    "tslint.json": "jsonc"
+  },
+
+  /* `jest` */
+
+  // Whether errors should be reported inline on a file.
+  "jest.enableInlineErrorMessages": true,
+
+  // The path to your Jest configuration file.
+  // "jest.pathToConfig": "jest.config.js",
+
+  // The path to the Jest binary, or an npm command to run tests suffixed with `--`
+  // e.g. `node_modules/.bin/jest` or `npm test --`.
+  // "jest.pathToJest": "node_modules/.bin/jest",
+
+  // Restart Jest runner after updating the snapshots.
+  "jest.restartJestOnSnapshotUpdate": true,
+
+  // The path to your frontend src folder.
+  // "jest.rootPath": ".",
+
+  // Show code coverage when extension starts (if collected).
+  "jest.showCoverageOnLoad": true,
+
+  /* `json` */
+
+  // Associate schemas to JSON files in the current project.
+  "json.schemas": [
+    /* `babel` */
+
+    // Associate schema to `.babelrc`.
+    {
+      // An array of file patterns to match against when resolving JSON files to schemas.
+      // `*` can be used as a wildcard. Exclusion patterns can also be defined and start with '!'.
+      // A file matches when there is at least one matching pattern
+      // and the last matching pattern is not an exclusion pattern.
+      "fileMatch": [".babelrc", ".babelrc.json", "babel.config.json"],
+
+      // Describes a JSON file using a schema.
+      // See json-schema.org for more info.
+      // "schema": true,
+
+      // A URL to a schema or a relative path to a schema in the current directory.
+      "url": "http://json.schemastore.org/babelrc"
+    },
+
+    /* `commitizen` */
+
+    // Associate schema to `.czrc`.
+    {
+      // An array of file patterns to match against when resolving JSON files to schemas.
+      // `*` can be used as a wildcard. Exclusion patterns can also be defined and start with '!'.
+      // A file matches when there is at least one matching pattern
+      // and the last matching pattern is not an exclusion pattern.
+      "fileMatch": [".czrc", ".cz.json"],
+
+      // Describes a JSON file using a schema.
+      // See json-schema.org for more info.
+      "schema": true,
+
+      // A URL to a schema or a relative path to a schema in the current directory.
+      "url": "./schemas/czrc.schema.json"
+    },
+
+    /* `commitlint` */
+
+    // Associate schema to `.commitlintrc.json`.
+    {
+      // An array of file patterns to match against when resolving JSON files to schemas.
+      // `*` can be used as a wildcard. Exclusion patterns can also be defined and start with '!'.
+      // A file matches when there is at least one matching pattern
+      // and the last matching pattern is not an exclusion pattern.
+      "fileMatch": [".commitlintrc.json"],
+
+      // Describes a JSON file using a schema.
+      // See json-schema.org for more info.
+      // "schema": true,
+
+      // A URL to a schema or a relative path to a schema in the current directory.
+      "url": "https://json.schemastore.org/commitlintrc"
+    },
+
+    /* `eslint` */
+
+    // Associate schema to `.eslintrc`.
+    {
+      // An array of file patterns to match against when resolving JSON files to schemas.
+      // `*` can be used as a wildcard. Exclusion patterns can also be defined and start with '!'.
+      // A file matches when there is at least one matching pattern
+      // and the last matching pattern is not an exclusion pattern.
+      "fileMatch": [".eslintrc", ".eslintrc.json"],
+
+      // Describes a JSON file using a schema.
+      // See json-schema.org for more info.
+      // "schema": true,
+
+      // A URL to a schema or a relative path to a schema in the current directory.
+      "url": "http://json.schemastore.org/eslintrc"
+    },
+
+    /* `husky` */
+
+    // Associate schema to `.huskyrc`.
+    {
+      // An array of file patterns to match against when resolving JSON files to schemas.
+      // `*` can be used as a wildcard. Exclusion patterns can also be defined and start with '!'.
+      // A file matches when there is at least one matching pattern
+      // and the last matching pattern is not an exclusion pattern.
+      "fileMatch": [".huskyrc", ".huskyrc.json"],
+
+      // Describes a JSON file using a schema.
+      // See json-schema.org for more info.
+      // "schema": true,
+
+      // A URL to a schema or a relative path to a schema in the current directory.
+      "url": "http://json.schemastore.org/huskyrc"
+    },
+
+    /* `jsconfig` */
+
+    // Associate schema to `jsconfig.json`.
+    {
+      // An array of file patterns to match against when resolving JSON files to schemas.
+      // `*` can be used as a wildcard. Exclusion patterns can also be defined and start with '!'.
+      // A file matches when there is at least one matching pattern
+      // and the last matching pattern is not an exclusion pattern.
+      "fileMatch": ["jsconfig.json"],
+
+      // Describes a JSON file using a schema.
+      // See json-schema.org for more info.
+      // "schema": true,
+
+      // A URL to a schema or a relative path to a schema in the current directory.
+      "url": "http://json.schemastore.org/jsconfig"
+    },
+
+    /* `lerna` */
+
+    // Associate schema to `lerna.json`.
+    {
+      // An array of file patterns to match against when resolving JSON files to schemas.
+      // `*` can be used as a wildcard. Exclusion patterns can also be defined and start with '!'.
+      // A file matches when there is at least one matching pattern
+      // and the last matching pattern is not an exclusion pattern.
+      "fileMatch": ["lerna.json"],
+
+      // Describes a JSON file using a schema.
+      // See json-schema.org for more info.
+      // "schema": true,
+
+      // A URL to a schema or a relative path to a schema in the current directory.
+      "url": "http://json.schemastore.org/lerna"
+    },
+
+    /* `lint-staged` */
+
+    // Associate schema to `.lintstagedrc`.
+    {
+      // An array of file patterns to match against when resolving JSON files to schemas.
+      // `*` can be used as a wildcard. Exclusion patterns can also be defined and start with '!'.
+      // A file matches when there is at least one matching pattern
+      // and the last matching pattern is not an exclusion pattern.
+      "fileMatch": [".lintstagedrc", ".lintstagedrc.json"],
+
+      // Describes a JSON file using a schema.
+      // See json-schema.org for more info.
+      // "schema": true,
+
+      // A URL to a schema or a relative path to a schema in the current directory.
+      "url": "http://json.schemastore.org/lintstagedrc.schema"
+    },
+
+    /* `npm` */
+
+    // Associate schema to `package.json`.
+    {
+      // An array of file patterns to match against when resolving JSON files to schemas.
+      // `*` can be used as a wildcard. Exclusion patterns can also be defined and start with '!'.
+      // A file matches when there is at least one matching pattern
+      // and the last matching pattern is not an exclusion pattern.
+      "fileMatch": ["package.json"],
+
+      // Describes a JSON file using a schema.
+      // See json-schema.org for more info.
+      // "schema": true,
+
+      // A URL to a schema or a relative path to a schema in the current directory.
+      "url": "http://json.schemastore.org/package"
+    },
+
+    /* `prettier` */
+
+    // Associate schema to `.prettierrc`.
+    {
+      // An array of file patterns to match against when resolving JSON files to schemas.
+      // `*` can be used as a wildcard. Exclusion patterns can also be defined and start with '!'.
+      // A file matches when there is at least one matching pattern
+      // and the last matching pattern is not an exclusion pattern.
+      "fileMatch": [".prettierrc", ".prettierrc.json", ".prettierrc.json5"],
+
+      // Describes a JSON file using a schema.
+      // See json-schema.org for more info.
+      // "schema": true,
+
+      // A URL to a schema or a relative path to a schema in the current directory.
+      "url": "http://json.schemastore.org/prettierrc"
+    },
+
+    /* `serve` */
+
+    // Associate schema to `serve.json`.
+    {
+      // An array of file patterns to match against when resolving JSON files to schemas.
+      // `*` can be used as a wildcard. Exclusion patterns can also be defined and start with '!'.
+      // A file matches when there is at least one matching pattern
+      // and the last matching pattern is not an exclusion pattern.
+      "fileMatch": ["serve.json"],
+
+      // Describes a JSON file using a schema.
+      // See json-schema.org for more info.
+      "schema": true,
+
+      // A URL to a schema or a relative path to a schema in the current directory.
+      "url": "./schemas/serve.schema.json"
+    },
+
+    /* `stylelint` */
+
+    // Associate schema to `.stylelintrc`.
+    {
+      // An array of file patterns to match against when resolving JSON files to schemas.
+      // `*` can be used as a wildcard. Exclusion patterns can also be defined and start with '!'.
+      // A file matches when there is at least one matching pattern
+      // and the last matching pattern is not an exclusion pattern.
+      "fileMatch": [".stylelintrc", ".stylelintrc.json"],
+
+      // Describes a JSON file using a schema.
+      // See json-schema.org for more info.
+      // "schema": true,
+
+      // A URL to a schema or a relative path to a schema in the current directory.
+      "url": "http://json.schemastore.org/stylelintrc"
+    },
+
+    /* `tsconfig` */
+
+    // Associate schema to `tsconfig.json`.
+    {
+      // An array of file patterns to match against when resolving JSON files to schemas.
+      // `*` can be used as a wildcard. Exclusion patterns can also be defined and start with '!'.
+      // A file matches when there is at least one matching pattern
+      // and the last matching pattern is not an exclusion pattern.
+      "fileMatch": ["tsconfig.json"],
+
+      // Describes a JSON file using a schema.
+      // See json-schema.org for more info.
+      // "schema": true,
+
+      // A URL to a schema or a relative path to a schema in the current directory.
+      "url": "http://json.schemastore.org/tsconfig"
+    },
+
+    /* `tslint` */
+
+    // Associate schema to `tslint.json`.
+    {
+      // An array of file patterns to match against when resolving JSON files to schemas.
+      // `*` can be used as a wildcard. Exclusion patterns can also be defined and start with '!'.
+      // A file matches when there is at least one matching pattern
+      // and the last matching pattern is not an exclusion pattern.
+      "fileMatch": ["tslint.json"],
+
+      // Describes a JSON file using a schema.
+      // See json-schema.org for more info.
+      // "schema": true,
+
+      // A URL to a schema or a relative path to a schema in the current directory.
+      "url": "http://json.schemastore.org/tslint"
+    }
+  ],
+
+  /* `prettier` */
+
+  // Path to the prettier configuration file.
+  "prettier.configPath": ".prettierrc.json5",
+
+  // Path to a .prettierignore file.
+  "prettier.ignorePath": ".prettierignore",
+
+  // The package manager you use to install node modules.
+  "prettier.packageManager": "yarn",
+
+  // Path to the prettier module.
+  "prettier.prettierPath": "node_modules/prettier",
+
+  // Require a prettier configuration file to format.
+  // See documentation for valid configuration files.
+  "prettier.requireConfig": true,
+
+  /* `redhat` */
+
+  // Enable usage data and errors to be sent to Red Hat servers.
+  // Read our privacy statement.
+  "redhat.telemetry.enabled": false,
+
+  /* `remote` */
+
+  // Configures the list of extensions to always install while creating a container.
+  "remote.containers.defaultExtensions": [
+    "bradlc.vscode-tailwindcss",
+    "coenraads.bracket-pair-colorizer",
+    "csstools.postcss",
+    "dbaeumer.vscode-eslint",
+    "editorconfig.editorconfig",
+    "esbenp.prettier-vscode",
+    "johnpapa.vscode-peacock",
+    "jpoissonnier.vscode-styled-components",
+    "mindaro.mindaro",
+    "mindaro-dev.file-downloader",
+    "ms-azuretools.vscode-docker",
+    "ms-kubernetes-tools.vscode-kubernetes-tools",
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "ms-vscode-remote.remote-containers",
+    "ms-vscode-remote.remote-ssh",
+    "ms-vscode-remote.remote-ssh-edit",
+    "ms-vscode-remote.remote-wsl",
+    "ms-vscode-remote.vscode-remote-extensionpack",
+    "ms-vsliveshare.vsliveshare",
+    "ms-vsliveshare.vsliveshare-audio",
+    "ms-vsliveshare.vsliveshare-pack",
+    "mutantdino.resourcemonitor",
+    "orta.vscode-jest",
+    "redhat.vscode-yaml",
+    "stylelint.vscode-stylelint",
+    "vscode-icons-team.vscode-icons",
+    "wallabyjs.quokka-vscode"
+  ],
+
+  // The log level for the extension.
+  "remote.containers.logLevel": "trace",
+
+  // Whether enabled extensions are downloaded locally and installed on remote.
+  "remote.downloadExtensionsLocally": false,
+
+  // // Override the kind of an extension.
+  // `ui` extensions are installed and run on the local machine
+  // while `workspace` extensions are run on the remote.
+  // By overriding an extension's default kind using this setting,
+  // you specify if that extension should be installed and enabled locally or remotely.
+  "remote.extensionKind": {
+    "bradlc.vscode-tailwindcss": ["workspace"],
+    "coenraads.bracket-pair-colorizer": ["workspace"],
+    "csstools.postcss": ["workspace"],
+    "dbaeumer.vscode-eslint": ["workspace"],
+    "editorconfig.editorconfig": ["workspace"],
+    "esbenp.prettier-vscode": ["workspace"],
+    "johnpapa.vscode-peacock": ["workspace"],
+    "jpoissonnier.vscode-styled-components": ["workspace"],
+    "mindaro.mindaro": ["workspace"],
+    "mindaro-dev.file-downloader": ["workspace"],
+    "ms-azuretools.vscode-docker": ["workspace"],
+    "ms-kubernetes-tools.vscode-kubernetes-tools": ["workspace"],
+    "ms-vscode.vscode-typescript-tslint-plugin": ["workspace"],
+    "ms-vscode-remote.remote-containers": ["ui"],
+    "ms-vscode-remote.remote-ssh": ["ui"],
+    "ms-vscode-remote.remote-ssh-edit": ["ui"],
+    "ms-vscode-remote.remote-wsl": ["ui"],
+    "ms-vscode-remote.vscode-remote-extensionpack": ["ui"],
+    "ms-vsliveshare.vsliveshare": ["workspace"],
+    "ms-vsliveshare.vsliveshare-audio": ["workspace"],
+    "ms-vsliveshare.vsliveshare-pack": ["workspace"],
+    "mutantdino.resourcemonitor": ["workspace"],
+    "orta.vscode-jest": ["workspace"],
+    "redhat.vscode-yaml": ["workspace"],
+    "stylelint.vscode-stylelint": ["workspace"],
+    "vscode-icons-team.vscode-icons": ["workspace"],
+    "wallabyjs.quokka-vscode": ["workspace"]
+  },
+
+  /* `stylelint` */
+
+  // A path to the directory that relative paths defining "extends" and "plugins" are relative to.
+  // "stylelint.configBasedir": ".",
+
+  // The package manager you use to install node modules.
+  "stylelint.packageManager": "yarn",
+
+  // Also report errors for `stylelint-disable` comments that are used for rules that don't exist within the configuration object.
+  "stylelint.reportInvalidScopeDisables": true,
+
+  // Also report errors for `stylelint-disable` comments that are not blocking a lint warning.
+  "stylelint.reportNeedlessDisables": true,
+
+  // Supply a custom path to the stylelint module.
+  // "stylelint.stylelintPath": "node_modules/stylelint",
+
+  /* `tslint` */
+
+  // The path to the rules configuration file.
+  // "tslint.configFile": "tslint.json",
+
+  // Control if TypeScript definition files should be ignored.
+  "tslint.ignoreDefinitionFiles": false,
+
+  // Control whether tslint is enabled for JavaScript files or not.
+  "tslint.jsEnable": true,
+
+  // The package manager you use to install node modules.
+  "tslint.packageManager": "yarn"
+}

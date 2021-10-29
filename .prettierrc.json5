@@ -1,0 +1,294 @@
+{
+  /***************************************************************************/
+  /*                                                                         */
+  /* `youtube-viewer`                                                         */
+  /* `Workspace`                                                             */
+  /* `.prettierrc.json5`                                                     */
+  /*                                                                         */
+  /***************************************************************************/
+
+  // JSON schema for Prettier configuration files.
+  "$schema": "http://json.schemastore.org/prettierrc",
+
+  // Include parentheses around a sole arrow function parameter.
+  // "arrowParens": "always",
+
+  // Print spaces between brackets.
+  // "bracketSpacing": true,
+
+  // Print (to stderr) where a cursor at the given position would move to after formatting.
+  // This option cannot be used with --range-start and --range-end.
+  // "cursorOffset": -1,
+
+  // Control how Prettier formats quoted code embedded in the file.
+  // "embeddedLanguageFormatting": "auto",
+
+  // Which end of line characters to apply.
+  // "endOfLine": "lf",
+
+  // Specify the input filepath.
+  // This will be used to do parser inference.
+  // "filepath": "",
+
+  // How to handle whitespaces in HTML.
+  // "htmlWhitespaceSensitivity": "css",
+
+  // Insert @format pragma into file's first docblock comment.
+  // "insertPragma": false,
+
+  // Put > on the last line instead of at a new line.
+  // "jsxBracketSameLine": false,
+
+  // Use single quotes in JSX.
+  // "jsxSingleQuote": false,
+
+  // Allows to override configuration for files and folders, specified by glob patterns.
+  "overrides": [
+    // Overrides for `.json5` files
+    {
+      // Exclude these files from this override.
+      // "excludeFiles": [],
+
+      // Include these files in this override.
+      "files": ["*.json5"],
+
+      // The options to apply for this override.
+      "options": {
+        // Include parentheses around a sole arrow function parameter.
+        // "arrowParens": "always",
+
+        // Print spaces between brackets.
+        // "bracketSpacing": true,
+
+        // Print (to stderr) where a cursor at the given position would move to after formatting.
+        // This option cannot be used with --range-start and --range-end.
+        // "cursorOffset": -1,
+
+        // Control how Prettier formats quoted code embedded in the file.
+        // "embeddedLanguageFormatting": "auto",
+
+        // Which end of line characters to apply.
+        "endOfLine": "lf",
+
+        // Specify the input filepath.
+        // This will be used to do parser inference.
+        // "filepath": "",
+
+        // How to handle whitespaces in HTML.
+        // "htmlWhitespaceSensitivity": "css",
+
+        // Insert @format pragma into file's first docblock comment.
+        // "insertPragma": false,
+
+        // Put > on the last line instead of at a new line.
+        // "jsxBracketSameLine": false,
+
+        // Use single quotes in JSX.
+        // "jsxSingleQuote": false,
+
+        // Which parser to use.
+        // "parser": "",
+
+        // Custom directory that contains prettier plugins in node_modules subdirectory.
+        // Overrides default behavior when plugins are searched relatively to the location of Prettier.
+        // Multiple values are accepted.
+        // "plugins": [],
+
+        // Add a plugin.
+        // Multiple plugins can be passed as separate `--plugin`s.
+        // "pluginSearchDirs": [],
+
+        // The line length where Prettier will try wrap.
+        // "printWidth": 80,
+
+        // How to wrap prose.
+        // "proseWrap": "preserve",
+
+        // Change when properties in objects are quoted.
+        "quoteProps": "preserve",
+
+        // Format code ending at a given character offset (exclusive).
+        // The range will extend forwards to the end of the selected statement.
+        // This option cannot be used with --cursor-offset.
+        // "rangeEnd": 0,
+
+        // Format code starting at a given character offset.
+        // The range will extend backwards to the start of the first line containing the selected statement.
+        // This option cannot be used with --cursor-offset.
+        // "rangeStart": 0,
+
+        // Require either '@prettier' or '@format' to be present in the file's first docblock comment
+        // in order for it to be formatted.
+        // "requirePragma": false,
+
+        // Print semicolons.
+        // "semi": true,
+
+        // Use single quotes instead of double quotes.
+        // "singleQuote": false,
+
+        // Number of spaces per indentation level.
+        // "tabWidth": 2,
+
+        // Print trailing commas wherever possible when multi-line.
+        "trailingComma": "none"
+
+        // Indent with tabs instead of spaces.
+        // "useTabs": false,
+
+        // Indent script and style tags in Vue files.
+        // "vueIndentScriptAndStyle": false
+      }
+    },
+
+    // Overrides for `.js`, `.jsx`, `.ts`, and `.tsx` files.
+    {
+      // Exclude these files from this override.
+      // "excludeFiles": [],
+
+      // Include these files in this override.
+      "files": ["*.cjs", "*.js", "*.jsx", "*.mjs", "*.ts", "*.tsx"],
+
+      // The options to apply for this override.
+      "options": {
+        // Include parentheses around a sole arrow function parameter.
+        "arrowParens": "always",
+
+        // Print spaces between brackets.
+        "bracketSpacing": true,
+
+        // Print (to stderr) where a cursor at the given position would move to after formatting.
+        // This option cannot be used with --range-start and --range-end.
+        // "cursorOffset": -1,
+
+        // Control how Prettier formats quoted code embedded in the file.
+        // "embeddedLanguageFormatting": "auto",
+
+        // Which end of line characters to apply.
+        "endOfLine": "lf",
+
+        // Specify the input filepath.
+        // This will be used to do parser inference.
+        // "filepath": "",
+
+        // How to handle whitespaces in HTML.
+        // "htmlWhitespaceSensitivity": "css",
+
+        // Insert @format pragma into file's first docblock comment.
+        // "insertPragma": false,
+
+        // Put > on the last line instead of at a new line.
+        // "jsxBracketSameLine": false,
+
+        // Use single quotes in JSX.
+        // "jsxSingleQuote": false,
+
+        // Which parser to use.
+        // "parser": "",
+
+        // Custom directory that contains prettier plugins in node_modules subdirectory.
+        // Overrides default behavior when plugins are searched relatively to the location of Prettier.
+        // Multiple values are accepted.
+        // "plugins": [],
+
+        // Add a plugin.
+        // Multiple plugins can be passed as separate `--plugin`s.
+        // "pluginSearchDirs": [],
+
+        // The line length where Prettier will try wrap.
+        // "printWidth": 80,
+
+        // How to wrap prose.
+        // "proseWrap": "preserve",
+
+        // Change when properties in objects are quoted.
+        // "quoteProps": "as-needed",
+
+        // Format code ending at a given character offset (exclusive).
+        // The range will extend forwards to the end of the selected statement.
+        // This option cannot be used with --cursor-offset.
+        // "rangeEnd": 0,
+
+        // Format code starting at a given character offset.
+        // The range will extend backwards to the start of the first line containing the selected statement.
+        // This option cannot be used with --cursor-offset.
+        // "rangeStart": 0,
+
+        // Require either '@prettier' or '@format' to be present in the file's first docblock comment
+        // in order for it to be formatted.
+        // "requirePragma": false,
+
+        // Print semicolons.
+        "semi": false,
+
+        // Use single quotes instead of double quotes.
+        "singleQuote": true,
+
+        // Number of spaces per indentation level.
+        "tabWidth": 2,
+
+        // Print trailing commas wherever possible when multi-line.
+        "trailingComma": "all"
+
+        // Indent with tabs instead of spaces.
+        // "useTabs": false,
+
+        // Indent script and style tags in Vue files.
+        // "vueIndentScriptAndStyle": false
+      }
+    }
+  ]
+
+  // Which parser to use.
+  // "parser": "",
+
+  // Custom directory that contains prettier plugins in node_modules subdirectory.
+  // Overrides default behavior when plugins are searched relatively to the location of Prettier.
+  // Multiple values are accepted.
+  // "plugins": [],
+
+  // Add a plugin.
+  // Multiple plugins can be passed as separate `--plugin`s.
+  // "pluginSearchDirs": [],
+
+  // The line length where Prettier will try wrap.
+  // "printWidth": 80,
+
+  // How to wrap prose.
+  // "proseWrap": "preserve",
+
+  // Change when properties in objects are quoted.
+  // "quoteProps": "as-needed",
+
+  // Format code ending at a given character offset (exclusive).
+  // The range will extend forwards to the end of the selected statement.
+  // This option cannot be used with --cursor-offset.
+  // "rangeEnd": 0,
+
+  // Format code starting at a given character offset.
+  // The range will extend backwards to the start of the first line containing the selected statement.
+  // This option cannot be used with --cursor-offset.
+  // "rangeStart": 0,
+
+  // Require either '@prettier' or '@format' to be present in the file's first docblock comment
+  // in order for it to be formatted.
+  // "requirePragma": false,
+
+  // Print semicolons.
+  // "semi": true,
+
+  // Use single quotes instead of double quotes.
+  // "singleQuote": false,
+
+  // Number of spaces per indentation level.
+  // "tabWidth": 2,
+
+  // Print trailing commas wherever possible when multi-line.
+  // "trailingComma": "es5",
+
+  // Indent with tabs instead of spaces.
+  // "useTabs": false,
+
+  // Indent script and style tags in Vue files.
+  // "vueIndentScriptAndStyle": false
+}

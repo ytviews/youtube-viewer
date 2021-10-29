@@ -2,7 +2,7 @@
 #                                                                             #
 # `youtube-viewer`                                                             #
 # `Workspace`                                                                 #
-# `.gitignore`                                                                #
+# `.npmignore`                                                                #
 #                                                                             #
 ###############################################################################
 
@@ -17,7 +17,6 @@
 **/build/Release/**
 **/dist/**
 **/out/**
-
 
 # Cache
 **/*.tsbuildinfo
@@ -45,8 +44,6 @@
 **/.nyc_output/**
 **/coverage/**
 **/lib-cov/**
-**/lib/**
-**/lib-esm/**
 
 # Dependencies
 **/bower_components/**
@@ -73,21 +70,3 @@
 **/*-error.log*
 **/logs
 **/report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
-
-# TypeScript v1 declaration files
-typings/
-
-# dotenv environment variables file
-.env
-.env.test
-
-# Comment in the public line in if your project uses Gatsby and *not* Next.js
-# https://nextjs.org/blog/next-9-1#public-directory-support
-# public
-
-.config
-.idea
-_bundles
-bundles
-
-*.png

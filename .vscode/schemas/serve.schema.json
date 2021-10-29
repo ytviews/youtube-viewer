@@ -1,0 +1,207 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+
+  "properties": {
+    "cleanUrls": {
+      "anyOf": [
+        {
+          "type": "array",
+
+          "items": {
+            "type": "string"
+          }
+        },
+
+        {
+          "default": true,
+
+          "type": "boolean"
+        }
+      ],
+
+      "description": "Set the extensions to be stripped from paths.",
+
+      "title": "cleanUrls"
+    },
+
+    "directoryListing": {
+      "anyOf": [
+        {
+          "type": "array",
+
+          "items": {
+            "type": "string"
+          }
+        },
+
+        {
+          "default": true,
+
+          "type": "boolean"
+        }
+      ],
+
+      "description": "Disable directory listing or restrict it to certain paths.",
+
+      "title": "directoryListing"
+    },
+
+    "etag": {
+      "default": true,
+
+      "description": "Calculate a strong ETag response header, instead of Last-Modified.",
+
+      "title": "etag",
+
+      "type": "boolean"
+    },
+
+    "headers": {
+      "items": [
+        {
+          "properties": {
+            "headers": {
+              "items": [
+                {
+                  "properties": {
+                    "key": {
+                      "type": "string"
+                    },
+
+                    "value": {
+                      "type": "string"
+                    }
+                  },
+
+                  "type": "object"
+                }
+              ],
+
+              "type": "array"
+            },
+
+            "source": {
+              "type": "string"
+            }
+          },
+
+          "type": "object"
+        }
+      ],
+
+      "description": "Set custom headers for specific paths.",
+
+      "title": "headers",
+
+      "type": "array"
+    },
+
+    "public": {
+      "description": "Set a sub directory to be served.",
+
+      "title": "public",
+
+      "type": "string"
+    },
+
+    "redirects": {
+      "items": [
+        {
+          "properties": {
+            "destination": {
+              "type": "string"
+            },
+
+            "source": {
+              "type": "string"
+            },
+
+            "type": {
+              "default": 301,
+
+              "enum": [301, 302]
+            }
+          },
+
+          "type": "object"
+        }
+      ],
+
+      "description": "Forward paths to different paths or external URLs.",
+
+      "title": "redirects",
+
+      "type": "array"
+    },
+
+    "renderSingle": {
+      "default": true,
+
+      "description": "If a directory only contains one file, render it.",
+
+      "title": "renderSingle",
+
+      "type": "boolean"
+    },
+
+    "rewrites": {
+      "items": [
+        {
+          "properties": {
+            "destination": {
+              "type": "string"
+            },
+            "source": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      ],
+
+      "description": "Rewrite paths to different paths.",
+
+      "title": "rewrites",
+
+      "type": "array"
+    },
+
+    "symlinks": {
+      "default": true,
+
+      "description": "Resolve symlinks instead of rendering a 404 error.",
+
+      "title": "symlinks",
+
+      "type": "boolean"
+    },
+
+    "trailingSlash": {
+      "default": true,
+
+      "description": "Remove or add trailing slashes to all paths.",
+
+      "title": "trailingSlash",
+
+      "type": "boolean"
+    },
+
+    "unlisted": {
+      "items": [
+        {
+          "type": "string"
+        }
+      ],
+
+      "description": "Exclude paths from the directory listing.",
+
+      "title": "unlisted",
+
+      "type": "array"
+    }
+  },
+
+  "title": "JSON schema for Serve configuration files",
+
+  "type": "object"
+}
