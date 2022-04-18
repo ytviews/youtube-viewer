@@ -53,9 +53,39 @@ export class BrowserSettings extends IChromiumSettings {
         return this.userAgent;
     }
 
-    public GetArgs(): IEnumerable<string> {
-        // ?@>:A8
-        let args: List<string> = new List<string>();
+    public get GetArgs(): string[] {
+        const result = [
+            '--allow-running-insecure-content', // https://source.chromium.org/search?q=lang:cpp+symbol:kAllowRunningInsecureContent&ss=chromium
+            '--autoplay-policy=user-gesture-required', // https://source.chromium.org/search?q=lang:cpp+symbol:kAutoplayPolicy&ss=chromium
+            '--disable-component-update', // https://source.chromium.org/search?q=lang:cpp+symbol:kDisableComponentUpdate&ss=chromium
+            '--disable-domain-reliability', // https://source.chromium.org/search?q=lang:cpp+symbol:kDisableDomainReliability&ss=chromium
+            '--disable-features=AudioServiceOutOfProcess,IsolateOrigins,site-per-process', // https://source.chromium.org/search?q=file:content_features.cc&ss=chromium
+            '--disable-print-preview', // https://source.chromium.org/search?q=lang:cpp+symbol:kDisablePrintPreview&ss=chromium
+            '--disable-setuid-sandbox', // https://source.chromium.org/search?q=lang:cpp+symbol:kDisableSetuidSandbox&ss=chromium
+            '--disable-site-isolation-trials', // https://source.chromium.org/search?q=lang:cpp+symbol:kDisableSiteIsolation&ss=chromium
+            '--disable-speech-api', // https://source.chromium.org/search?q=lang:cpp+symbol:kDisableSpeechAPI&ss=chromium
+            '--disable-web-security', // https://source.chromium.org/search?q=lang:cpp+symbol:kDisableWebSecurity&ss=chromium
+            '--disk-cache-size=33554432', // https://source.chromium.org/search?q=lang:cpp+symbol:kDiskCacheSize&ss=chromium
+            '--enable-features=SharedArrayBuffer', // https://source.chromium.org/search?q=file:content_features.cc&ss=chromium
+            '--hide-scrollbars', // https://source.chromium.org/search?q=lang:cpp+symbol:kHideScrollbars&ss=chromium
+            '--ignore-gpu-blocklist', // https://source.chromium.org/search?q=lang:cpp+symbol:kIgnoreGpuBlocklist&ss=chromium
+            '--in-process-gpu', // https://source.chromium.org/search?q=lang:cpp+symbol:kInProcessGPU&ss=chromium
+            '--mute-audio', // https://source.chromium.org/search?q=lang:cpp+symbol:kMuteAudio&ss=chromium
+            '--no-default-browser-check', // https://source.chromium.org/search?q=lang:cpp+symbol:kNoDefaultBrowserCheck&ss=chromium
+            '--no-pings', // https://source.chromium.org/search?q=lang:cpp+symbol:kNoPings&ss=chromium
+            '--no-sandbox', // https://source.chromium.org/search?q=lang:cpp+symbol:kNoSandbox&ss=chromium
+            '--no-zygote', // https://source.chromium.org/search?q=lang:cpp+symbol:kNoZygote&ss=chromium
+            '--use-gl=swiftshader', // https://source.chromium.org/search?q=lang:cpp+symbol:kUseGl&ss=chromium
+            '--window-size=1920,1080', // https://source.chromium.org/search?q=lang:cpp+symbol:kWindowSize&ss=chromium
+        ];
+        if (BrowserSettings.headless === true) {
+            result.push('--single-process'); // https://source.chromium.org/search?q=lang:cpp+symbol:kSingleProcess&ss=chromium
+        } else {
+            result.push('--start-maximized'); // https://source.chromium.org/search?q=lang:cpp+symbol:kStartMaximized&ss=chromium
+        }
+
+        return result;
+
         if (!string.IsNullOrEmpty(this.Proxy)) {
             Log.Debug("{nameof(Proxy)}: {Proxy}");
             let proxy = string.Empty;
@@ -77,24 +107,24 @@ export class BrowserSettings extends IChromiumSettings {
                 proxy = proxy.Split('@')[1];
             }
 
-            args.Add("--proxy-server={proxyProtocol}{proxy}");
+            result.push("--proxy-server={proxyProtocol}{proxy}");
         }
 
         if ((this._userAgentProvider != null)) {
             let useragent = this.GetUserAgent();
             if (!string.IsNullOrEmpty(useragent)) {
                 Log.Debug("{nameof(useragent)}: {useragent}");
-                args.Add("--user-agent=""""{useragent}""""");
+                result.push("--user-agent=""""{useragent}""""");
             }
 
         }
 
         if (this._noProxy) {
-            args.Add("--no-proxy-server");
+            result.push("--no-proxy-server");
         }
 
-        args.AddRange(this._addedArgs);
-        return args;
+        result.AddRange(this._addedArgs);
+        return result;
     }
 
     public GetProxy(serviceCode: ServiceCode): string {
