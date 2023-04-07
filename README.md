@@ -69,3 +69,4 @@ Also, the above commands runs 5 docker containers in parallel (which will transl
 
 [Auto-Gmail-Creator](https://github.com/leostech/Auto-Gmail-Creator)
 [gmail-account-creation-bot-appium-browserstack](https://github.com/shoaibatiq/gmail-account-creation-bot-appium-browserstack)
+[gmail-bot](https://github.com/lavclash75/gmail-bot)
