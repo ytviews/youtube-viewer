@@ -66,3 +66,6 @@ Also, the above commands runs 5 docker containers in parallel (which will transl
 [YouTube_Views_Bot](https://github.com/iChickn/YouTube_Views_Bot)
 [YoutubeViewBot](https://github.com/CodsXBlastin/YoutubeViewBot)
 [Search Youtube View Bot](https://github.com/search?q=bot+youtube+views+language%3APython&type=repositories&l=Python&p=2)
+
+[Auto-Gmail-Creator](https://github.com/leostech/Auto-Gmail-Creator)
+[gmail-account-creation-bot-appium-browserstack](https://github.com/shoaibatiq/gmail-account-creation-bot-appium-browserstack)
